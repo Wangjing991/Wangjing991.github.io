@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <title>常用操作函数 | 天生骄傲</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="1.类typeof函数在Javascript中提供了typeof函数来f可以准确地判断出简单数据类型，但对复杂数据类型的判断相对比较模糊。typeof 返回值有六种可能： “number,” “string,” “boolean,” “object,” “function,” 和 “undefined.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="常用操作函数">
+<meta property="og:url" content="http://yoursite.com/2016/04/01/常用函数/index.html">
+<meta property="og:site_name" content="天生骄傲">
+<meta property="og:description" content="1.类typeof函数在Javascript中提供了typeof函数来f可以准确地判断出简单数据类型，但对复杂数据类型的判断相对比较模糊。typeof 返回值有六种可能： “number,” “string,” “boolean,” “object,” “function,” 和 “undefined.">
+<meta property="og:updated_time" content="2016-07-30T08:16:21.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="常用操作函数">
+<meta name="twitter:description" content="1.类typeof函数在Javascript中提供了typeof函数来f可以准确地判断出简单数据类型，但对复杂数据类型的判断相对比较模糊。typeof 返回值有六种可能： “number,” “string,” “boolean,” “object,” “function,” 和 “undefined.">
+  
+    <link rel="alternative" href="/atom.xml" title="天生骄傲" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="http://o71omwu4q.bkt.clouddn.com/logo.png">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img lazy-src="http://o71omwu4q.bkt.clouddn.com/%E8%AF%97%E4%B8%8E%E8%BF%9C%E6%96%B9.png" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">Jimwan</a></h1>
+		</hgroup>
+
+		
+
+		
+			<div class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						
+						<div class="icon-wrap icon-me hide" data-idx="3">
+							<div class="user"></div>
+							<div class="shoulder"></div>
+						</div>
+						
+					</div>
+					
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>Menu</li>
+						<li>Tags</li>
+						
+						
+						<li>Über</li>
+						
+					</ul>
+				</div>
+			</div>
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="/archives">所有文章</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="github" target="_blank" href="#" title="github">github</a>
+					        
+								<a class="weibo" target="_blank" href="http://weibo.com/u/2241804112/home?wvr=5" title="weibo">weibo</a>
+					        
+								<a class="zhihu" target="_blank" href="https://www.zhihu.com/" title="zhihu">zhihu</a>
+					        
+								<a class="google" target="_blank" href="https://www.google.com" title="google">google</a>
+					        
+						</div>
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						<a href="/tags/Bootstrap/" style="font-size: 10px;">Bootstrap</a> <a href="/tags/CSS/" style="font-size: 16.67px;">CSS</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/HEXO-博客/" style="font-size: 10px;">HEXO 博客</a> <a href="/tags/Hello-World/" style="font-size: 10px;">Hello World</a> <a href="/tags/Javascript/" style="font-size: 20px;">Javascript</a> <a href="/tags/css/" style="font-size: 10px;">css</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/gulp/" style="font-size: 13.33px;">gulp</a> <a href="/tags/gulp-jade/" style="font-size: 10px;">gulp-jade</a> <a href="/tags/jQuery/" style="font-size: 13.33px;">jQuery</a> <a href="/tags/js/" style="font-size: 13.33px;">js</a> <a href="/tags/nodeJs/" style="font-size: 10px;">nodeJs</a> <a href="/tags/php/" style="font-size: 10px;">php</a> <a href="/tags/weChat/" style="font-size: 10px;">weChat</a> <a href="/tags/xxx/" style="font-size: 10px;">xxx</a>
+					</div>
+				</section>
+				
+				
+				
+
+				
+				
+				<section class="switch-part switch-part3">
+				
+					<div id="js-aboutme">我是诗，来自远方，我想回家？ 小时候远方是远方，长大了远方是家</div>
+				</section>
+				
+			</div>
+		</div>
+	</header>				
+</div>
+
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">Jimwan</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+			
+				<img lazy-src="http://o71omwu4q.bkt.clouddn.com/%E8%AF%97%E4%B8%8E%E8%BF%9C%E6%96%B9.png" class="js-avatar">
+			
+			</div>
+			<hgroup>
+			  <h1 class="header-author">Jimwan</h1>
+			</hgroup>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives">所有文章</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="#" title="github">github</a>
+			        
+						<a class="weibo" target="_blank" href="http://weibo.com/u/2241804112/home?wvr=5" title="weibo">weibo</a>
+			        
+						<a class="zhihu" target="_blank" href="https://www.zhihu.com/" title="zhihu">zhihu</a>
+			        
+						<a class="google" target="_blank" href="https://www.google.com" title="google">google</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+
+      <div class="body-wrap"><article id="post-常用函数" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/04/01/常用函数/" class="article-date">
+  	<time datetime="2016-04-01T11:08:46.000Z" itemprop="datePublished">2016-04-01</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      常用操作函数
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Javascript/">Javascript</a></li></ul>
+	</div>
+
+        
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="1-类typeof函数"><a href="#1-类typeof函数" class="headerlink" title="1.类typeof函数"></a>1.类typeof函数</h2><p>在Javascript中提供了typeof函数来f可以准确地判断出简单数据类型，但对复杂数据类型的判断相对比较模糊。typeof 返回值有六种可能： “number,” “string,” “boolean,” “object,” “function,” 和 “undefined.<br><a id="more"></a><br>比如： 数组对象 \ 时间对象 \ 正则对象 \ Math对象等都返回的是 ‘object’</p>
+<p>优化方案：</p>
+<pre><code>封装函数
+  function type( obj ){
+       var o = {};
+       return     o.toString.call(obj).slice(8,-1).toLowerCase(); 
+     }
+</code></pre><p>实现原理：<br>Object 对象的 prototype 的 toString() 方法会返回一个表示对象本身类型的字符串。</p>
+<h2 id="2-isArrayLike判断数组类型"><a href="#2-isArrayLike判断数组类型" class="headerlink" title="2.isArrayLike判断数组类型"></a>2.isArrayLike判断数组类型</h2><p>在工作中经常遇到判断一个对象是否是数组或者类数组，因此构造函数isArrayLike判断对象是否是数组或者类数组</p>
+<pre><code>function isArrayLike( obj ){
+       var tp = type(obj),length;
+       if(!obj||tp===&apos;function&apos;||tp===&apos;window&apos;||tp===&apos;string&apos;||tp===&apos;object&apos;) return false;
+
+       if( tp === &apos;array&apos; ) return true;
+
+       length = obj.length;
+
+       if(&apos;length&apos; in obj &amp;&amp; typeof length === &apos;number&apos; &amp;&amp;  length &gt;= 0 ) return true;
+       //判断是否有length属性，并且length是一个大于等于0的数字 
+
+       return false;
+     }
+
+     function type(obj){
+       var o = {};
+       return o.toString.call(obj).slice(8,-1).toLowerCase();
+     }
+</code></pre><p>PS： in 运算符   </p>
+<pre><code>-  检测对象中是否有指定的属性   
+ -   &apos;属性名&apos; in 对象    
+ -  有 true   没有  false
+</code></pre><h2 id="3-each循环遍历函数"><a href="#3-each循环遍历函数" class="headerlink" title="3.each循环遍历函数"></a>3.each循环遍历函数</h2><p>封装一个函数each（）函数，可以实现遍历数组、js对象及DOM对象。</p>
+<pre><code>function each(obj,callback){
+        var i = 0, len;
+        if(!obj||typeof obj !== &apos;object&apos;)return;
+        if( isArrayLike(obj) ){
+          len = obj.length;
+          for(; i&lt;len; i++){
+            callback.call(obj[i],i,obj[i]);
+          } 
+        }else{
+          for(i in obj){
+            callback.call(obj[i],i,obj[i]);
+          } 
+        }
+      }
+      function isArrayLike( obj ){
+        var tp = type(obj),length;
+        if(!obj||tp===&apos;function&apos;||tp===&apos;window&apos;||tp===&apos;string&apos;||tp===&apos;object&apos;) return false;
+        if( tp === &apos;array&apos; ) return true;
+        length = obj.length;
+        if(&apos;length&apos; in obj &amp;&amp; typeof length === &apos;number&apos; &amp;&amp;  length &gt;= 0 ) return true;
+        return false;
+      }
+      function type(obj){
+        var o = {};
+        return o.toString.call(obj).slice(8,-1).toLowerCase();
+      }  
+</code></pre><p>应用举例：</p>
+<pre><code>var aLi = document.getElementsByTagName(&apos;li&apos;);  
+var arr = [1,2,3,4];
+var obj = {a:1,b:2,length: -1};
+each(arr,function(index,val){
+ console.log( index , val ); 
+   });
+each(obj,function(index,val){
+ console.log( index , val ); 
+});
+each(aLi,function(index,val){
+ this.innerHTML = &apos;fdsafsafa&apos; + index;
+});
+</code></pre><h2 id="4-获取DOM元素属性函数"><a href="#4-获取DOM元素属性函数" class="headerlink" title="4.获取DOM元素属性函数"></a>4.获取DOM元素属性函数</h2><pre><code>function css(obj,attr){
+  return parseFloat( obj.currentStyle ? obj.currentStyle[attr] : getComputedStyle(obj)[attr] ) || 0;
+}
+</code></pre><h2 id="5-线性运动函数"><a href="#5-线性运动函数" class="headerlink" title="5.线性运动函数"></a>5.线性运动函数</h2><pre><code>function doMove(obj,attr,target){
+  var iLeft = css(obj,attr);
+  var timer = null;
+  timer = setInterval(function(){
+    iLeft += 10; 
+    if( iLeft &gt;= target ){
+      iLeft = target;
+      clearInterval(timer);
+    }   
+    obj.style[attr] = iLeft + &apos;px&apos;;  
+  },20);  
+}
+function css(obj,attr){
+  return parseFloat( obj.currentStyle ? obj.currentStyle[attr] : getComputedStyle(obj)[attr] ) || 0;
+}
+</code></pre>
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2016/04/18/Bootstrap网格系统/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          Bootstrap网格系统
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/04/01/Javascript数组算法/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Javascript数组算法</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<div class="share_jia">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">Share to: &nbsp; </span>
+		<a class="jiathis_button_facebook"></a> 
+    <a class="jiathis_button_twitter"></a>
+    <a class="jiathis_button_plus"></a> 
+    <a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+    <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
+
+
+
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="常用函数" data-title="常用操作函数" data-url="http://yoursite.com/2016/04/01/常用函数/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"true"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+</div>
+      <footer id="footer">
+
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy;  2016 Jimwan
+
+    	</div>
+      	<div class="footer-right">
+
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a>
+ by Litten
+      	</div>
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+
+    </div>
+
+  </div>
+</footer>
+
+</script>
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	}
+</script>
+<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script src="/js/main.js"></script>
+
+
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  </div>
+</body>
+</html>

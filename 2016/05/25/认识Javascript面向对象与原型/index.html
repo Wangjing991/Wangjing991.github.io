@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <title>认识Javascript面向对象与原型 | 天生骄傲</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="JS中的对象 对象是键值对的结合，也可以叫做无序属性的集合，其属性可以包括基本值、函数、对象。每个属性都会有一个名字，每个名字映射到一个值上下面是创建一个对象的一些方法
+面向对象的特点：封装，继承，多态。
+JS中面向对象的组成：                1.方法（函数）：过程，动态的                2.属性（有所属关系的变量）：状态，静态的">
+<meta property="og:type" content="article">
+<meta property="og:title" content="认识Javascript面向对象与原型">
+<meta property="og:url" content="http://yoursite.com/2016/05/25/认识Javascript面向对象与原型/index.html">
+<meta property="og:site_name" content="天生骄傲">
+<meta property="og:description" content="JS中的对象 对象是键值对的结合，也可以叫做无序属性的集合，其属性可以包括基本值、函数、对象。每个属性都会有一个名字，每个名字映射到一个值上下面是创建一个对象的一些方法
+面向对象的特点：封装，继承，多态。
+JS中面向对象的组成：                1.方法（函数）：过程，动态的                2.属性（有所属关系的变量）：状态，静态的">
+<meta property="og:updated_time" content="2016-05-25T09:49:52.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="认识Javascript面向对象与原型">
+<meta name="twitter:description" content="JS中的对象 对象是键值对的结合，也可以叫做无序属性的集合，其属性可以包括基本值、函数、对象。每个属性都会有一个名字，每个名字映射到一个值上下面是创建一个对象的一些方法
+面向对象的特点：封装，继承，多态。
+JS中面向对象的组成：                1.方法（函数）：过程，动态的                2.属性（有所属关系的变量）：状态，静态的">
+  
+    <link rel="alternative" href="/atom.xml" title="天生骄傲" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="http://o71omwu4q.bkt.clouddn.com/logo.png">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img lazy-src="http://o71omwu4q.bkt.clouddn.com/%E8%AF%97%E4%B8%8E%E8%BF%9C%E6%96%B9.png" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">Jimwan</a></h1>
+		</hgroup>
+
+		
+
+		
+			<div class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						
+						<div class="icon-wrap icon-me hide" data-idx="3">
+							<div class="user"></div>
+							<div class="shoulder"></div>
+						</div>
+						
+					</div>
+					
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>Menu</li>
+						<li>Tags</li>
+						
+						
+						<li>Über</li>
+						
+					</ul>
+				</div>
+			</div>
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="/archives">所有文章</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="github" target="_blank" href="#" title="github">github</a>
+					        
+								<a class="weibo" target="_blank" href="http://weibo.com/u/2241804112/home?wvr=5" title="weibo">weibo</a>
+					        
+								<a class="zhihu" target="_blank" href="https://www.zhihu.com/" title="zhihu">zhihu</a>
+					        
+								<a class="google" target="_blank" href="https://www.google.com" title="google">google</a>
+					        
+						</div>
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						<a href="/tags/Bootstrap/" style="font-size: 10px;">Bootstrap</a> <a href="/tags/CSS/" style="font-size: 16.67px;">CSS</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/HEXO-博客/" style="font-size: 10px;">HEXO 博客</a> <a href="/tags/Hello-World/" style="font-size: 10px;">Hello World</a> <a href="/tags/Javascript/" style="font-size: 20px;">Javascript</a> <a href="/tags/css/" style="font-size: 10px;">css</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/gulp/" style="font-size: 13.33px;">gulp</a> <a href="/tags/gulp-jade/" style="font-size: 10px;">gulp-jade</a> <a href="/tags/jQuery/" style="font-size: 13.33px;">jQuery</a> <a href="/tags/js/" style="font-size: 13.33px;">js</a> <a href="/tags/nodeJs/" style="font-size: 10px;">nodeJs</a> <a href="/tags/php/" style="font-size: 10px;">php</a> <a href="/tags/weChat/" style="font-size: 10px;">weChat</a> <a href="/tags/xxx/" style="font-size: 10px;">xxx</a>
+					</div>
+				</section>
+				
+				
+				
+
+				
+				
+				<section class="switch-part switch-part3">
+				
+					<div id="js-aboutme">我是诗，来自远方，我想回家？ 小时候远方是远方，长大了远方是家</div>
+				</section>
+				
+			</div>
+		</div>
+	</header>				
+</div>
+
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">Jimwan</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+			
+				<img lazy-src="http://o71omwu4q.bkt.clouddn.com/%E8%AF%97%E4%B8%8E%E8%BF%9C%E6%96%B9.png" class="js-avatar">
+			
+			</div>
+			<hgroup>
+			  <h1 class="header-author">Jimwan</h1>
+			</hgroup>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives">所有文章</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="#" title="github">github</a>
+			        
+						<a class="weibo" target="_blank" href="http://weibo.com/u/2241804112/home?wvr=5" title="weibo">weibo</a>
+			        
+						<a class="zhihu" target="_blank" href="https://www.zhihu.com/" title="zhihu">zhihu</a>
+			        
+						<a class="google" target="_blank" href="https://www.google.com" title="google">google</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+
+      <div class="body-wrap"><article id="post-认识Javascript面向对象与原型" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/05/25/认识Javascript面向对象与原型/" class="article-date">
+  	<time datetime="2016-05-25T08:53:12.000Z" itemprop="datePublished">2016-05-25</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      认识Javascript面向对象与原型
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Javascript/">Javascript</a></li></ul>
+	</div>
+
+        
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="JS中的对象"><a href="#JS中的对象" class="headerlink" title="JS中的对象"></a>JS中的对象</h2><p> 对象是键值对的结合，也可以叫做无序属性的集合，其属性可以包括基本值、函数、对象。每个属性都会有一个名字，每个名字映射到一个值上下面是创建一个对象的一些方法</p>
+<p>面向对象的特点：封装，继承，多态。</p>
+<p>JS中面向对象的组成：<br>                1.方法（函数）：过程，动态的<br>                2.属性（有所属关系的变量）：状态，静态的<br><a id="more"></a></p>
+<h2 id="创建对象"><a href="#创建对象" class="headerlink" title="创建对象"></a>创建对象</h2><h3 id="1-普通对象"><a href="#1-普通对象" class="headerlink" title="1.普通对象"></a>1.普通对象</h3><p>创建一个对象,然后给这个对象新建属性和方法：</p>
+<pre><code> var box = new Object();              // 创建一个Object对象;
+ box.name = &apos;lee&apos;;                    // 创建一个name属性并赋值;
+ box.age = 100;
+ box.run = function(){                // 创建一个run()方法并返回值;
+   return this.name+this.age+&apos;运行中...&apos;;
+ } 
+console.log(box.run());              // 输入属性和方法的值;
+</code></pre><h3 id="2-工厂模式"><a href="#2-工厂模式" class="headerlink" title="2.工厂模式"></a>2.工厂模式</h3><p> 这种方法就是为了解决实例化对象产生大量代码重复的问题：</p>
+<pre><code>    function createObject(name,age){        // 集中创建函数体;
+     var obj = new Object;         // 函数体内创建Object;
+     obj.name = name; 
+     obj.age = age;
+     obj.run = function(){
+         return this.name+this.age+&quot;运行中...&quot;;
+     };
+     return obj;
+}
+var box1 = createObject(&quot;lee&quot;,100);     // 实例化;调用函数并传参;
+var box2 = createObject(&quot;jack&quot;,200);    // 实例二;
+console.log(box1.run()+box2.run());     // 实例保持相对独立;
+缺点:对象与实例的识别问题;无法搞清楚它们到底是那个对象的实例;
+console.log(typeof box1);               // Object;
+</code></pre><h3 id="3-构造函数"><a href="#3-构造函数" class="headerlink" title="3.构造函数"></a>3.构造函数</h3><p>ECMAScript 中可以采用构造函数(构造方法)可用来创建特定的对象：</p>
+<pre><code>    function Box(name,age){          // 构造函数模式;
+    this.name = name;           // this代表对象Box;
+    this.age = age;
+    this.run = function(){
+        return this.name+this.age+&quot;运行中...&quot;;
+    };
+}
+    var box1 = new Box(&quot;lee&quot;,100);         // 要创建对象的实例必须用new操作符;
+    var box2 = new Box(&quot;jack&quot;,200);        // box1和box2都是Box对象的实例;
+     console.log(box1 instanceof Box);      // true;很清晰的识别box1从属于Box;
+</code></pre><p>使用构造函数的方法,即解决了重复实例化的问题,又解决了对象识别的问题,但问题是,这里并没有 new Object(),为什么可以实例化 Box(),这个是哪里来的呢?   </p>
+<p>使用了构造函数的方法,和使用工厂模式的方法他们不同之处如下:</p>
+<p> 1.构造函数方法没有显示的创建对象(new Object());</p>
+<p> 2.直接将属性和方法赋值给 this 对象;</p>
+<p> 3.没有 renturn 语句。</p>
+<p>  构造函数的方法有一些规范:</p>
+<p>1.函数名和实例化构造名相同且大写,(PS:非强制,但这么写有助于区分构造函数和 普通函数);</p>
+<p>2.通过构造函数创建对象,必须使用 new 运算符。</p>
+<p>既然通过构造函数可以创建对象,那么这个对象是哪里来的,new Object()在什么地方 执行了?执行的过程如下:</p>
+<p>1.当使用了构造函数,并且 new 构造函数(),那么就后台执行了 new Object();</p>
+<p>2.将构造函数的作用域给新对象,(即 new Object()创建出的对象),而函数体内的 this 就 代表 new Object()出来的对象。</p>
+<p>3.执行构造函数内的代码;</p>
+<p>4.返回新对象(后台直接返回)。</p>
+<h2 id="原型"><a href="#原型" class="headerlink" title="原型"></a>原型</h2><p>原型是函数所具有的一种属性这个属性是一个指针（地址），指向一个对象而这个对象的用途是包含可以由特定类型的所有实例共享的属性和方法。</p>
+<ul>
+<li><p>用途:包含可以由特定类型的所有实例共享的属性和方法;</p>
+</li>
+<li><p>理解: prototype是通过调用构造函数创建的那个对象的原型对象;</p>
+</li>
+<li><p>使用原型的好处是可以让所有对象实例共享它所包含的属性和方法;</p>
+</li>
+<li><p>也就是说, 不必在构造函数中定义对象信息(属性/方法),而是可以直接将这些信息添加到原型中;</p>
+</li>
+<li><p>原型模式的执行流程:</p>
+<p>1.先查找构造函数对象的实例里的属性或方法,若有,立刻返回;</p>
+<p>2.若构造函数对象的实例里没有,则去它的原型对象里找,若有,就返回;    </p>
+</li>
+</ul>
+<p>虽然我们可以通过对象实例访问保存在原型中的值,但却不能访问通过对象实例重写原型中的值;    </p>
+<h3 id="1-原型模式"><a href="#1-原型模式" class="headerlink" title="1.原型模式"></a>1.原型模式</h3><pre><code>function Box(){}                                // 声明构造函数;
+Box.prototype.name = &apos;Lee&apos;;                     // 在原型里添加属性和方法;
+Box.prototype.age = 100;
+Box.prototype.run = function() {
+    return this.name+this.age+&apos;运行中...&apos;;
+};
+var box1 = new Box();
+var box2 = new Box();
+console.log(box1.run==box2.run);                // =&gt;true;方法引用的地址保持一致;
+</code></pre><p>  在原型中多了两个属性,这两个原型属性都是创建对象时自动生成的;</p>
+<p>  _ <em>proto</em> _:构造函数指向原型对象的一个指针;它的作用:指向构造函数的原型的属性constructor;</p>
+<h3 id="2-原型的字面量模式"><a href="#2-原型的字面量模式" class="headerlink" title="2.原型的字面量模式"></a>2.原型的字面量模式</h3><pre><code>function Box(){};
+ Box.prototype = {             // 以字面量形式创建包含属性和方法的新对象;
+    name:&apos;Lee&apos;,
+    age:100,
+    run:function(){
+        return this.name+this.age+&apos;运行中...&apos;;
+    }
+ };
+</code></pre><p> 使用构造函数创建原型对象和使用字面量创建原型对象在使用上基本相同;<br> 但是,使用字面量创建的原型对象使用constructor属性不会指向实例,而是指向原型对象Object;构造函数的方式则相反;</p>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2016/05/25/微信网页授权1/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          微信开发基础
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/05/12/Github搭建个人网站必备技巧/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Git常用指令</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<div class="share_jia">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">Share to: &nbsp; </span>
+		<a class="jiathis_button_facebook"></a> 
+    <a class="jiathis_button_twitter"></a>
+    <a class="jiathis_button_plus"></a> 
+    <a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+    <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
+
+
+
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="认识Javascript面向对象与原型" data-title="认识Javascript面向对象与原型" data-url="http://yoursite.com/2016/05/25/认识Javascript面向对象与原型/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"true"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+</div>
+      <footer id="footer">
+
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy;  2016 Jimwan
+
+    	</div>
+      	<div class="footer-right">
+
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a>
+ by Litten
+      	</div>
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+
+    </div>
+
+  </div>
+</footer>
+
+</script>
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	}
+</script>
+<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script src="/js/main.js"></script>
+
+
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  </div>
+</body>
+</html>

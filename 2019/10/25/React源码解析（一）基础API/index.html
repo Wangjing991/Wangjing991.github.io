@@ -8,16 +8,16 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>天生骄傲</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="本文介绍React 常用的几个基础API，学习源码的第一步； 一、react 暴露出来的api列表源码地址： https://github.com/facebook/react/blob/master/packages/react/src/React.js 12345678910111213141516171819202122232425262728293031323334353637383940">
+  <meta name="description" content="本文介绍React 常用的几个基础API，学习源码的第一步； 一、react 暴露出来的api列表源码地址： https://github.com/facebook/react/blob/master/packages/react/src/React.js">
 <meta property="og:type" content="article">
 <meta property="og:title" content="天生骄傲">
 <meta property="og:url" content="http://yoursite.com/2019/10/25/React源码解析（一）基础API/index.html">
 <meta property="og:site_name" content="天生骄傲">
-<meta property="og:description" content="本文介绍React 常用的几个基础API，学习源码的第一步； 一、react 暴露出来的api列表源码地址： https://github.com/facebook/react/blob/master/packages/react/src/React.js 12345678910111213141516171819202122232425262728293031323334353637383940">
-<meta property="og:updated_time" content="2019-10-25T10:44:03.189Z">
+<meta property="og:description" content="本文介绍React 常用的几个基础API，学习源码的第一步； 一、react 暴露出来的api列表源码地址： https://github.com/facebook/react/blob/master/packages/react/src/React.js">
+<meta property="og:updated_time" content="2019-10-25T10:53:40.737Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="天生骄傲">
-<meta name="twitter:description" content="本文介绍React 常用的几个基础API，学习源码的第一步； 一、react 暴露出来的api列表源码地址： https://github.com/facebook/react/blob/master/packages/react/src/React.js 12345678910111213141516171819202122232425262728293031323334353637383940">
+<meta name="twitter:description" content="本文介绍React 常用的几个基础API，学习源码的第一步； 一、react 暴露出来的api列表源码地址： https://github.com/facebook/react/blob/master/packages/react/src/React.js">
   
     <link rel="alternative" href="/atom.xml" title="天生骄傲" type="application/atom+xml">
   
@@ -160,6 +160,7 @@
       
         <p>本文介绍React 常用的几个基础API，学习源码的第一步；</p>
 <h3 id="一、react-暴露出来的api列表"><a href="#一、react-暴露出来的api列表" class="headerlink" title="一、react 暴露出来的api列表"></a>一、react 暴露出来的api列表</h3><p>源码地址： <a href="https://github.com/facebook/react/blob/master/packages/react/src/React.js" target="_blank" rel="external">https://github.com/facebook/react/blob/master/packages/react/src/React.js</a></p>
+<a id="more"></a>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> React = &#123;</div><div class="line">  <span class="attr">Children</span>: &#123;</div><div class="line">    map,</div><div class="line">    forEach,</div><div class="line">    count,</div><div class="line">    toArray,</div><div class="line">    only,</div><div class="line">  &#125;,</div><div class="line"></div><div class="line">  createRef,</div><div class="line">  Component,</div><div class="line">  PureComponent,</div><div class="line"></div><div class="line">  createContext,</div><div class="line">  forwardRef,</div><div class="line">  lazy,</div><div class="line">  memo,</div><div class="line"></div><div class="line">  useCallback,</div><div class="line">  useContext,</div><div class="line">  useEffect,</div><div class="line">  useImperativeHandle,</div><div class="line">  useDebugValue,</div><div class="line">  useLayoutEffect,</div><div class="line">  useMemo,</div><div class="line">  useReducer,</div><div class="line">  useRef,</div><div class="line">  useState,</div><div class="line"></div><div class="line">  <span class="attr">Fragment</span>: REACT_FRAGMENT_TYPE,</div><div class="line">  <span class="attr">Profiler</span>: REACT_PROFILER_TYPE,</div><div class="line">  <span class="attr">StrictMode</span>: REACT_STRICT_MODE_TYPE,</div><div class="line">  <span class="attr">Suspense</span>: REACT_SUSPENSE_TYPE,</div><div class="line"></div><div class="line">  <span class="attr">createElement</span>: __DEV__ ? createElementWithValidation : createElement,</div><div class="line">  <span class="attr">cloneElement</span>: __DEV__ ? cloneElementWithValidation : cloneElement,</div><div class="line">  <span class="attr">createFactory</span>: __DEV__ ? createFactoryWithValidation : createFactory,</div><div class="line">  <span class="attr">isValidElement</span>: isValidElement,</div><div class="line"></div><div class="line">  <span class="attr">version</span>: ReactVersion,</div><div class="line"></div><div class="line">  <span class="attr">__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED</span>: ReactSharedInternals,</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
 <p>常用api有 <code>Component、PureComponent、createElement、createContext</code>；下面分别降序这几个api</p>
 <h3 id="二、常用api详解"><a href="#二、常用api详解" class="headerlink" title="二、常用api详解"></a>二、常用api详解</h3><h4 id="1-Component"><a href="#1-Component" class="headerlink" title="1.Component"></a>1.Component</h4><p>源码地址： <a href="https://github.com/facebook/react/blob/master/packages/react/src/ReactBaseClasses.js" target="_blank" rel="external">https://github.com/facebook/react/blob/master/packages/react/src/ReactBaseClasses.js</a></p>
@@ -378,7 +379,7 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">canvas</a>
+                <a href="javascript:void(0)" class="js-tag color5">代码管理</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -386,11 +387,11 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">代码管理</a>
+                <a href="javascript:void(0)" class="js-tag color4">function</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">function</a>
+                <a href="javascript:void(0)" class="js-tag color2">canvas</a>
               </li>
             
             <div class="clearfix"></div>

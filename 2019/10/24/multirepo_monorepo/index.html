@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="天生骄傲">
 <meta property="og:description" content="在查看很多项目源代码时会发现很多项目代码里面没有src目录和我们平时的开发模式很大差别，如是就查阅相关资料发现这是另一种代码管理的方式。 看一下react源码目录：">
 <meta property="og:image" content="http://wangjing991.github.io/2019/10/24/multirepo_monorepo/16c6ba2a8a6ce740.png">
-<meta property="og:updated_time" content="2019-10-26T07:36:52.395Z">
+<meta property="og:updated_time" content="2019-10-26T07:38:49.760Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="multirepo">
 <meta name="twitter:description" content="在查看很多项目源代码时会发现很多项目代码里面没有src目录和我们平时的开发模式很大差别，如是就查阅相关资料发现这是另一种代码管理的方式。 看一下react源码目录：">
@@ -185,7 +185,7 @@
 <p>如果我们团队选择 monorepo，那主要的挑战自然是随着项目的发展，其会变得非常庞大（因为没有根据模块或功能拆分成不同 repo）。因此会需要很多的工具来应对这样的挑战。虽然我们可能认为这是一个很糟糕的做法，但是现在这样做的开源项目和公司并不算少。</p>
 <h3 id="二、multirepo（多元化）"><a href="#二、multirepo（多元化）" class="headerlink" title="二、multirepo（多元化）"></a>二、multirepo（多元化）</h3><p><code>multiple repositories</code>把一个大的 codebase 拆成一些独立的 package 或 module，再将这些功能独立的 package 分别放入单独的 repository 中进行维护，项目开发多采用这种方式。</p>
 <h4 id="multirepo-应用"><a href="#multirepo-应用" class="headerlink" title="multirepo 应用"></a>multirepo 应用</h4><p>这种管理方式可以让每个子团队拥有自己的 repo，我们可以用自己擅长的工具、workflow 等等。多元化能促使各个团队尽可能的提升自己的效率。但代价也在于会增加很多沟通成本，如果我们项目用到的库中发现了一个 bug，就必须到目标库里修复它、打包、发版本，然后再回到我们的库继续工作。在不同的仓库间，我们不仅需要处理不同的代码、工具，甚至是不同的工作流程。甚至我们只能去问维护这个仓库的人，能不能为我们做出改变，然后等着他们去解决。</p>
-<h3 id="三、monorepo-VS-multirepo（集中管理-vs-多元化）"><a href="#三、monorepo-VS-multirepo（集中管理-vs-多元化）" class="headerlink" title="三、monorepo VS multirepo（集中管理 vs 多元化）"></a>三、monorepo VS multirepo（集中管理 vs 多元化）</h3><p><img src="" alt="img"><img src="//wangjing991.github.io/2019/10/24/multirepo_monorepo/16c6ba2a8a6ce740.png" alt="16c6ba2a8a6ce740"></p>
+<h3 id="三、monorepo-VS-multirepo（集中管理-vs-多元化）"><a href="#三、monorepo-VS-multirepo（集中管理-vs-多元化）" class="headerlink" title="三、monorepo VS multirepo（集中管理 vs 多元化）"></a>三、monorepo VS multirepo（集中管理 vs 多元化）</h3><p><img src="//wangjing991.github.io/2019/10/24/multirepo_monorepo/16c6ba2a8a6ce740.png" alt="16c6ba2a8a6ce740"></p>
 
       
 
@@ -417,15 +417,15 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">代码管理</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">canvas</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">javascript</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">代码管理</a>
               </li>
              
               <li class="article-tag-list-item">

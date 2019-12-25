@@ -6,17 +6,18 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://wangjing991.github.io">
-  <title>Archives: 2019 | 天生骄傲</title>
+  <title>服务器相关知识 | 天生骄傲</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="诗和远方">
-<meta property="og:type" content="website">
-<meta property="og:title" content="天生骄傲">
-<meta property="og:url" content="http://wangjing991.github.io/archives/2019/index.html">
+  <meta name="description" content="一、pm21.pm2安装 下载：  npm install pm2@latest -g 创建软链接，设置pm2全局命令 ln -s /opt/node/bin/pm2 /usr/local/bin/pm2 2.pm2常用命令123456pm2 start app.js --watch -i 2 // watch 监听 件变化  // -i 启动多少个实 pm2 stop all   //停止所有进">
+<meta property="og:type" content="article">
+<meta property="og:title" content="服务器相关知识">
+<meta property="og:url" content="http://wangjing991.github.io/2019/12/25/服务器相关知识/index.html">
 <meta property="og:site_name" content="天生骄傲">
-<meta property="og:description" content="诗和远方">
+<meta property="og:description" content="一、pm21.pm2安装 下载：  npm install pm2@latest -g 创建软链接，设置pm2全局命令 ln -s /opt/node/bin/pm2 /usr/local/bin/pm2 2.pm2常用命令123456pm2 start app.js --watch -i 2 // watch 监听 件变化  // -i 启动多少个实 pm2 stop all   //停止所有进">
+<meta property="og:updated_time" content="2019-12-25T10:11:37.614Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="天生骄傲">
-<meta name="twitter:description" content="诗和远方">
+<meta name="twitter:title" content="服务器相关知识">
+<meta name="twitter:description" content="一、pm21.pm2安装 下载：  npm install pm2@latest -g 创建软链接，设置pm2全局命令 ln -s /opt/node/bin/pm2 /usr/local/bin/pm2 2.pm2常用命令123456pm2 start app.js --watch -i 2 // watch 监听 件变化  // -i 启动多少个实 pm2 stop all   //停止所有进">
   
     <link rel="alternative" href="/atom.xml" title="天生骄傲" type="application/atom+xml">
   
@@ -152,162 +153,149 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
+            <article id="post-服务器相关知识" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
   
+    <h1 class="article-title" itemprop="name">
+      服务器相关知识
+    </h1>
   
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2019" class="archive-year">2019</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/12/25/服务器相关知识/" class="archive-article-date">
+
+        
+        <a href="/2019/12/25/服务器相关知识/" class="archive-article-date">
   	<time datetime="2019-12-25T05:39:42.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-25</time>
 </a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/12/25/服务器相关知识/">服务器相关知识</a>
-    </h1>
-  
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="一、pm2"><a href="#一、pm2" class="headerlink" title="一、pm2"></a>一、pm2</h3><h5 id="1-pm2安装"><a href="#1-pm2安装" class="headerlink" title="1.pm2安装"></a>1.pm2安装</h5><p> 下载：  <code>npm install pm2@latest -g</code></p>
+<p>创建软链接，设置pm2全局命令 <code>ln -s /opt/node/bin/pm2 /usr/local/bin/pm2</code></p>
+<h5 id="2-pm2常用命令"><a href="#2-pm2常用命令" class="headerlink" title="2.pm2常用命令"></a>2.pm2常用命令</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">pm2 start app.js --watch -i 2 // watch 监听 件变化  // -i 启动多少个实 </div><div class="line">pm2 stop all   //停止所有进程</div><div class="line">pm2 restart server.js // 重启pm2 进程</div><div class="line">pm2 list // 查看进程列表</div><div class="line">pm2 start app.js -i max # 根据机 CPU核数，开启对应数 的进程</div><div class="line">pm2 startup // 设置pm2为开机启动</div></pre></td></tr></table></figure>
+<p>Pm2 参考链接：<a href="https://github.com/Unitech/pm2" target="_blank" rel="external">https://github.com/Unitech/pm2</a></p>
+<h3 id="二、nginx"><a href="#二、nginx" class="headerlink" title="二、nginx"></a>二、nginx</h3><h5 id="1-nginx安装"><a href="#1-nginx安装" class="headerlink" title="1.nginx安装"></a>1.nginx安装</h5><p><code>yum install nginx</code></p>
+<p>默认安装目录 <code>/etc/nginx</code></p>
+<h5 id="2-nginx-配置文件介绍"><a href="#2-nginx-配置文件介绍" class="headerlink" title="2.nginx 配置文件介绍"></a>2.nginx 配置文件介绍</h5><p>文件目录/etc/nginx/nginx.conf</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div></pre></td><td class="code"><pre><div class="line">user nginx;</div><div class="line">worker_processes auto;</div><div class="line">error_log /var/log/nginx/error.log;</div><div class="line">pid /run/nginx.pid;</div><div class="line"></div><div class="line"># Load dynamic modules. See /usr/share/doc/nginx/README.dynamic.</div><div class="line">include /usr/share/nginx/modules/*.conf;</div><div class="line"></div><div class="line">## 工作模式与连接数上限</div><div class="line">events &#123;</div><div class="line">    worker_connections 1024;  ## 单个进程的最大连接数</div><div class="line">&#125;</div><div class="line"></div><div class="line">## 设置http 服务器</div><div class="line">http &#123;</div><div class="line">    log_format  main  &apos;$remote_addr - $remote_user [$time_local] &quot;$request&quot; &apos;</div><div class="line">                      &apos;$status $body_bytes_sent &quot;$http_referer&quot; &apos;</div><div class="line">                      &apos;&quot;$http_user_agent&quot; &quot;$http_x_forwarded_for&quot;&apos;;</div><div class="line"></div><div class="line">    access_log  /var/log/nginx/access.log  main;</div><div class="line"></div><div class="line">    sendfile            on;</div><div class="line">    tcp_nopush          on;</div><div class="line">    tcp_nodelay         on;</div><div class="line">    keepalive_timeout   65;</div><div class="line">    types_hash_max_size 2048;</div><div class="line"></div><div class="line">    include             /etc/nginx/mime.types;</div><div class="line">    default_type        application/octet-stream;</div><div class="line"></div><div class="line">    # Load modular configuration files from the /etc/nginx/conf.d directory.</div><div class="line">    # See http://nginx.org/en/docs/ngx_core_module.html#include</div><div class="line">    # for more information.</div><div class="line">    include /etc/nginx/conf.d/*.conf;</div><div class="line"></div><div class="line">    server &#123;</div><div class="line">        listen       80 default_server;</div><div class="line">        listen       [::]:80 default_server;</div><div class="line">        server_name  www.jimwan.club;</div><div class="line"></div><div class="line">        # Load configuration files for the default server block.</div><div class="line">        include /etc/nginx/default.d/*.conf;</div><div class="line">			</div><div class="line">			  ## 配置前端文件</div><div class="line">				location / &#123;</div><div class="line">                root /data/git/zanke_register/dist;</div><div class="line">                index  index.html;</div><div class="line">        &#125;</div><div class="line">        </div><div class="line">        //配置前端图片等静态资源文件</div><div class="line">         location ~ \.(gif|jpg|png)$ &#123;</div><div class="line">       				 root /data/git/zanke_register/dist/static;</div><div class="line">  			  &#125;</div><div class="line">		</div><div class="line">        error_page 404 /404.html;</div><div class="line">            location = /40x.html &#123;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        error_page 500 502 503 504 /50x.html;</div><div class="line">            location = /50x.html &#123;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">		server &#123;  // 配置后台服务接口，统一为3001 设置跨域模式</div><div class="line">          listen       3001 default_server;</div><div class="line">          listen       [::]:3001 default_server;</div><div class="line">          server_name  www.jimwan.club;</div><div class="line"></div><div class="line">          # Load configuration files for the default server block.</div><div class="line">          include /etc/nginx/default.d/*.conf;</div><div class="line">       	 location /api &#123;</div><div class="line">       	 				// 后台服务设置 3000端口；私有ip 172.17.0.3</div><div class="line">                  proxy_pass  http://172.17.0.3:3000;</div><div class="line">                  proxy_redirect     off;</div><div class="line">                  proxy_set_header   Host             $host;</div><div class="line">                  proxy_set_header   X-Real-IP        $remote_addr;</div><div class="line">                  proxy_set_header   X-Forwarded-For  $proxy_add_x_forwarded_for;</div><div class="line">           &#125;</div><div class="line">          location / &#123;</div><div class="line">                  root /data/git/zanke_register;</div><div class="line">                  index  index.html;</div><div class="line">          &#125;</div><div class="line"></div><div class="line">          location ~ ^/(webadmin/) &#123; //正则替换请求路径</div><div class="line">                rewrite ^/(?:webadmin)/(.*)$ /webaace/$1 break;</div><div class="line">                proxy_pass        http://10.0.10.48:8086;</div><div class="line">                 proxy_set_header Host $host;</div><div class="line">                 proxy_set_header X-Real-IP $remote_addr;</div><div class="line">                 proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;</div><div class="line"></div><div class="line">           &#125;</div><div class="line">          error_page 404 /404.html;</div><div class="line">              location = /40x.html &#123;</div><div class="line">          &#125;</div><div class="line"></div><div class="line">          error_page 500 502 503 504 /50x.html;</div><div class="line">               location = /50x.html &#123;</div><div class="line">          &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h5 id="3-nginx常见命令"><a href="#3-nginx常见命令" class="headerlink" title="3.nginx常见命令"></a>3.nginx常见命令</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">nginx -t // 查看配置文件位置</div><div class="line">#启动nginx服务</div><div class="line">systemctl start nginx.service</div><div class="line">nginx -s reload</div><div class="line">#停止nginx服务</div><div class="line">systemctl stop nginx.service</div><div class="line">nginx -s stop</div><div class="line">#重启nginx服务</div><div class="line">systemctl restart nginx.service</div><div class="line">#重新读取nginx配置(这个最常用, 不用停止nginx服务就能使修改的配置生效)</div><div class="line">systemctl reload nginx.service</div></pre></td></tr></table></figure>
+<p>参考文档：<a href="https://juejin.im/post/5abb32d2f265da23a141f35c" target="_blank" rel="external">https://juejin.im/post/5abb32d2f265da23a141f35c</a></p>
 
-        <div class="article-info info-on-right">
-          
-          
+      
 
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://wangjing991.github.io/2019/12/25/服务器相关知识/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/12/24/Mongodb笔记/" class="archive-article-date">
-  	<time datetime="2019-12-24T06:29:38.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-24</time>
-</a>
-        </div>
-    	 
+<nav id="article-nav">
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/12/24/Mongodb笔记/">Mongodb笔记</a>
-    </h1>
+  
+    <a href="/2019/12/24/Mongodb笔记/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Mongodb笔记</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+
+
+
+  
+  
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/10/31/React源码解析（二）react-dom/" class="archive-article-date">
-  	<time datetime="2019-10-31T06:35:49.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-10-31</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/10/31/React源码解析（二）react-dom/">React源码解析（二）react-dom</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/10/25/React源码解析（一）基础API/" class="archive-article-date">
-  	<time datetime="2019-10-25T10:18:38.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-10-25</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-monorepo">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/10/24/multirepo_monorepo/" class="archive-article-date">
-  	<time datetime="2019-10-24T06:54:11.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-10-24</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/10/24/multirepo_monorepo/">multirepo</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">代码管理</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
   
-    </div></section>
-  
-
-    
 
 
           </div>
@@ -337,8 +325,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,

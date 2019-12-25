@@ -6,18 +6,18 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://wangjing991.github.io">
-  <title>Mongodb笔记 | 天生骄傲</title>
+  <title>Mongodb安装 | 天生骄傲</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="1.mongodb 文件目录 、usr/local/mongodb">
+  <meta name="description" content="1.mongodb 文件目录 usr/local/mongodb">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Mongodb笔记">
+<meta property="og:title" content="Mongodb安装">
 <meta property="og:url" content="http://wangjing991.github.io/2019/12/24/Mongodb笔记/index.html">
 <meta property="og:site_name" content="天生骄傲">
-<meta property="og:description" content="1.mongodb 文件目录 、usr/local/mongodb">
-<meta property="og:updated_time" content="2019-12-25T10:13:50.829Z">
+<meta property="og:description" content="1.mongodb 文件目录 usr/local/mongodb">
+<meta property="og:updated_time" content="2019-12-25T10:31:37.805Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Mongodb笔记">
-<meta name="twitter:description" content="1.mongodb 文件目录 、usr/local/mongodb">
+<meta name="twitter:title" content="Mongodb安装">
+<meta name="twitter:description" content="1.mongodb 文件目录 usr/local/mongodb">
   
     <link rel="alternative" href="/atom.xml" title="天生骄傲" type="application/atom+xml">
   
@@ -160,7 +160,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      Mongodb笔记
+      Mongodb安装
     </h1>
   
 
@@ -174,7 +174,7 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p>1.mongodb 文件目录</p>
-<p><code>、usr/local/mongodb</code></p>
+<p><code>usr/local/mongodb</code></p>
 <a id="more"></a>
 <p>2.mongodb.conf 配置文件介绍</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"># 设置端口号（默认的端口号是 27017）</div><div class="line">port = 27018</div><div class="line">#远程连接要指定ip 不然无法连接。0.0.0.0不限制ip访问,并开启对</div><div class="line">应端口</div><div class="line">bind_ip=0.0.0.0</div><div class="line"></div><div class="line"># 设置数据文件的存放目录</div><div class="line">dbpath = /usr/local/mongodb/data/koa2-blog/db</div><div class="line"></div><div class="line"># 设置日志文件的存放目录及其日志文件名</div><div class="line">logpath = /usr/local/mongodb/data/koa2-blog/log/mongodb.log</div><div class="line"></div><div class="line"># 设置每个数据库将被保存在一个单独的目录</div><div class="line">directoryperdb = true</div><div class="line"></div><div class="line"># 设置为以守护进程的方式运行，即在后台运行</div><div class="line">fork = true</div><div class="line"></div><div class="line"># 日志追加</div><div class="line">logappend=true</div><div class="line"># hh</div><div class="line"># 访问权限</div><div class="line">auth=false</div><div class="line">~</div></pre></td></tr></table></figure>
@@ -186,7 +186,7 @@
 <p>4.启动关闭服务，设置开机启动</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">#启动服务 </div><div class="line">systemctl start mongodb.service   </div><div class="line">#关闭服务   </div><div class="line">systemctl stop mongodb.service   </div><div class="line">#开机启动   </div><div class="line">systemctl enable mongodb.service </div><div class="line"># 查看状态</div><div class="line">systemctl status mongodb.service</div><div class="line"># 如果mongodb.service配置错误 在更改后记得重新加载文件</div><div class="line">systemctl daemon-reload</div></pre></td></tr></table></figure>
 <p>5.设置mongo、mongod命令为全局命令</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">ln -s /usr/local/mongodb/mongodb3.6.3/bin/mongo  /usr/local/bin/mongo</div><div class="line">ln -s /usr/local/mongodb/mongodb3.6.3/bin/mongod  /usr/local/bin/mongod</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">ln -s /usr/local/mongodb/bin/mongo  /usr/local/bin/mongo</div><div class="line">ln -s /usr/local/mongodb/bin/mongod  /usr/local/bin/mongod</div></pre></td></tr></table></figure>
 <p>6.链接数据库</p>
 <p>7.设置数据库访问权限</p>
 <ul>
@@ -196,7 +196,12 @@
 <li><p>创建一个管理员账户</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">db.createUser(&#123;user:&quot;admin&quot;,pwd:&quot;wz123&quot;,roles:[&#123;role:&quot;userAdminAnyDatabase&quot;, db: &quot;admin&quot;&#125;]&#125;)</div></pre></td></tr></table></figure>
 </li>
+<li><p>开启权限验证</p>
+<p>在/usr/local/mongodb/conf/mongodb.conf中设置</p>
+<p><code>访问权限 auth=true</code></p>
+</li>
 </ul>
+<p>参考链接：<a href="https://juejin.im/post/5abb32d2f265da23a141f35c" target="_blank" rel="external">https://juejin.im/post/5abb32d2f265da23a141f35c</a></p>
 
       
 

@@ -8,16 +8,16 @@
   <link rel="dns-prefetch" href="http://wangjing991.github.io">
   <title>服务器相关知识 | 天生骄傲</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="一、pm21.pm2安装 下载：  npm install pm2@latest -g 创建软链接，设置pm2全局命令 ln -s /opt/node/bin/pm2 /usr/local/bin/pm2 2.pm2常用命令123456pm2 start app.js --watch -i 2 // watch 监听 件变化  // -i 启动多少个实 pm2 stop all   //停止所有进">
+  <meta name="description" content="一、pm21.pm2安装 下载：  npm install pm2@latest -g 创建软链接，设置pm2全局命令 ln -s /opt/node/bin/pm2 /usr/local/bin/pm2">
 <meta property="og:type" content="article">
 <meta property="og:title" content="服务器相关知识">
 <meta property="og:url" content="http://wangjing991.github.io/2019/12/25/服务器相关知识/index.html">
 <meta property="og:site_name" content="天生骄傲">
-<meta property="og:description" content="一、pm21.pm2安装 下载：  npm install pm2@latest -g 创建软链接，设置pm2全局命令 ln -s /opt/node/bin/pm2 /usr/local/bin/pm2 2.pm2常用命令123456pm2 start app.js --watch -i 2 // watch 监听 件变化  // -i 启动多少个实 pm2 stop all   //停止所有进">
-<meta property="og:updated_time" content="2019-12-25T10:11:37.614Z">
+<meta property="og:description" content="一、pm21.pm2安装 下载：  npm install pm2@latest -g 创建软链接，设置pm2全局命令 ln -s /opt/node/bin/pm2 /usr/local/bin/pm2">
+<meta property="og:updated_time" content="2019-12-25T10:13:50.929Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="服务器相关知识">
-<meta name="twitter:description" content="一、pm21.pm2安装 下载：  npm install pm2@latest -g 创建软链接，设置pm2全局命令 ln -s /opt/node/bin/pm2 /usr/local/bin/pm2 2.pm2常用命令123456pm2 start app.js --watch -i 2 // watch 监听 件变化  // -i 启动多少个实 pm2 stop all   //停止所有进">
+<meta name="twitter:description" content="一、pm21.pm2安装 下载：  npm install pm2@latest -g 创建软链接，设置pm2全局命令 ln -s /opt/node/bin/pm2 /usr/local/bin/pm2">
   
     <link rel="alternative" href="/atom.xml" title="天生骄傲" type="application/atom+xml">
   
@@ -175,6 +175,7 @@
       
         <h3 id="一、pm2"><a href="#一、pm2" class="headerlink" title="一、pm2"></a>一、pm2</h3><h5 id="1-pm2安装"><a href="#1-pm2安装" class="headerlink" title="1.pm2安装"></a>1.pm2安装</h5><p> 下载：  <code>npm install pm2@latest -g</code></p>
 <p>创建软链接，设置pm2全局命令 <code>ln -s /opt/node/bin/pm2 /usr/local/bin/pm2</code></p>
+<a id="more"></a>
 <h5 id="2-pm2常用命令"><a href="#2-pm2常用命令" class="headerlink" title="2.pm2常用命令"></a>2.pm2常用命令</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">pm2 start app.js --watch -i 2 // watch 监听 件变化  // -i 启动多少个实 </div><div class="line">pm2 stop all   //停止所有进程</div><div class="line">pm2 restart server.js // 重启pm2 进程</div><div class="line">pm2 list // 查看进程列表</div><div class="line">pm2 start app.js -i max # 根据机 CPU核数，开启对应数 的进程</div><div class="line">pm2 startup // 设置pm2为开机启动</div></pre></td></tr></table></figure>
 <p>Pm2 参考链接：<a href="https://github.com/Unitech/pm2" target="_blank" rel="external">https://github.com/Unitech/pm2</a></p>
 <h3 id="二、nginx"><a href="#二、nginx" class="headerlink" title="二、nginx"></a>二、nginx</h3><h5 id="1-nginx安装"><a href="#1-nginx安装" class="headerlink" title="1.nginx安装"></a>1.nginx安装</h5><p><code>yum install nginx</code></p>

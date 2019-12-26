@@ -6,17 +6,18 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://wangjing991.github.io">
-  <title>Archives: 2019/12 | 天生骄傲</title>
+  <title>天生骄傲</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="诗和远方">
-<meta property="og:type" content="website">
+  <meta name="description" content="本文介绍React 常用的几个基础API，学习源码的第一步； 一、react 暴露出来的api列表源码地址： https://github.com/facebook/react/blob/master/packages/react/src/React.js">
+<meta property="og:type" content="article">
 <meta property="og:title" content="天生骄傲">
-<meta property="og:url" content="http://wangjing991.github.io/archives/2019/12/index.html">
+<meta property="og:url" content="http://wangjing991.github.io/2019/10/25/React源码解析基础API/index.html">
 <meta property="og:site_name" content="天生骄傲">
-<meta property="og:description" content="诗和远方">
+<meta property="og:description" content="本文介绍React 常用的几个基础API，学习源码的第一步； 一、react 暴露出来的api列表源码地址： https://github.com/facebook/react/blob/master/packages/react/src/React.js">
+<meta property="og:updated_time" content="2019-12-26T07:45:32.272Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="天生骄傲">
-<meta name="twitter:description" content="诗和远方">
+<meta name="twitter:description" content="本文介绍React 常用的几个基础API，学习源码的第一步； 一、react 暴露出来的api列表源码地址： https://github.com/facebook/react/blob/master/packages/react/src/React.js">
   
     <link rel="alternative" href="/atom.xml" title="天生骄傲" type="application/atom+xml">
   
@@ -152,97 +153,146 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-React源码解析基础API" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>本文介绍React 常用的几个基础API，学习源码的第一步；</p>
+<h3 id="一、react-暴露出来的api列表"><a href="#一、react-暴露出来的api列表" class="headerlink" title="一、react 暴露出来的api列表"></a>一、react 暴露出来的api列表</h3><p>源码地址： <a href="https://github.com/facebook/react/blob/master/packages/react/src/React.js" target="_blank" rel="external">https://github.com/facebook/react/blob/master/packages/react/src/React.js</a></p>
+<a id="more"></a>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> React = &#123;</div><div class="line">  <span class="attr">Children</span>: &#123;</div><div class="line">    map,</div><div class="line">    forEach,</div><div class="line">    count,</div><div class="line">    toArray,</div><div class="line">    only,</div><div class="line">  &#125;,</div><div class="line"></div><div class="line">  createRef,</div><div class="line">  Component,</div><div class="line">  PureComponent,</div><div class="line"></div><div class="line">  createContext,</div><div class="line">  forwardRef,</div><div class="line">  lazy,</div><div class="line">  memo,</div><div class="line"></div><div class="line">  useCallback,</div><div class="line">  useContext,</div><div class="line">  useEffect,</div><div class="line">  useImperativeHandle,</div><div class="line">  useDebugValue,</div><div class="line">  useLayoutEffect,</div><div class="line">  useMemo,</div><div class="line">  useReducer,</div><div class="line">  useRef,</div><div class="line">  useState,</div><div class="line"></div><div class="line">  <span class="attr">Fragment</span>: REACT_FRAGMENT_TYPE,</div><div class="line">  <span class="attr">Profiler</span>: REACT_PROFILER_TYPE,</div><div class="line">  <span class="attr">StrictMode</span>: REACT_STRICT_MODE_TYPE,</div><div class="line">  <span class="attr">Suspense</span>: REACT_SUSPENSE_TYPE,</div><div class="line"></div><div class="line">  <span class="attr">createElement</span>: __DEV__ ? createElementWithValidation : createElement,</div><div class="line">  <span class="attr">cloneElement</span>: __DEV__ ? cloneElementWithValidation : cloneElement,</div><div class="line">  <span class="attr">createFactory</span>: __DEV__ ? createFactoryWithValidation : createFactory,</div><div class="line">  <span class="attr">isValidElement</span>: isValidElement,</div><div class="line"></div><div class="line">  <span class="attr">version</span>: ReactVersion,</div><div class="line"></div><div class="line">  <span class="attr">__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED</span>: ReactSharedInternals,</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<p>常用api有 <code>Component、PureComponent、createElement</code>；下面分别讲解这几个api</p>
+<h3 id="二、常用api详解"><a href="#二、常用api详解" class="headerlink" title="二、常用api详解"></a>二、常用api详解</h3><h4 id="1-Component"><a href="#1-Component" class="headerlink" title="1.Component"></a>1.Component</h4><p>源码地址： <a href="https://github.com/facebook/react/blob/master/packages/react/src/ReactBaseClasses.js" target="_blank" rel="external">https://github.com/facebook/react/blob/master/packages/react/src/ReactBaseClasses.js</a></p>
+<p>核心代码：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"> * Component 类接受三个参数 props、context很好理解，updater 类会做很多操作</div><div class="line"> */</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Component</span>(<span class="params">props, context, updater</span>) </span>&#123;</div><div class="line">  <span class="keyword">this</span>.props = props;</div><div class="line">  <span class="keyword">this</span>.context = context;</div><div class="line">  <span class="comment">// If a component has string refs, we will assign a different object later.</span></div><div class="line">  <span class="keyword">this</span>.refs = emptyObject;</div><div class="line">  <span class="comment">// We initialize the default updater but the real one gets injected by the</span></div><div class="line">  <span class="comment">// renderer.</span></div><div class="line">  <span class="keyword">this</span>.updater = updater || ReactNoopUpdateQueue;</div><div class="line">&#125;</div><div class="line"></div><div class="line">Component.prototype.isReactComponent = &#123;&#125;;</div><div class="line"></div><div class="line"><span class="comment">/**</span></div><div class="line"> * 修改state，调用 updater方法</div><div class="line"> */</div><div class="line">Component.prototype.setState = <span class="function"><span class="keyword">function</span>(<span class="params">partialState, callback</span>) </span>&#123;</div><div class="line">  invariant(</div><div class="line">    <span class="keyword">typeof</span> partialState === <span class="string">'object'</span> ||</div><div class="line">      <span class="keyword">typeof</span> partialState === <span class="string">'function'</span> ||</div><div class="line">      partialState == <span class="literal">null</span>,</div><div class="line">    <span class="string">'setState(...): takes an object of state variables to update or a '</span> +</div><div class="line">      <span class="string">'function which returns an object of state variables.'</span>,</div><div class="line">  );</div><div class="line">  <span class="keyword">this</span>.updater.enqueueSetState(<span class="keyword">this</span>, partialState, callback, <span class="string">'setState'</span>);</div><div class="line">&#125;;</div><div class="line"></div><div class="line"><span class="comment">/**</span></div><div class="line"> * 强制更新当前组件，调用 updater方法</div><div class="line"> */</div><div class="line">Component.prototype.forceUpdate = <span class="function"><span class="keyword">function</span>(<span class="params">callback</span>) </span>&#123;</div><div class="line">  <span class="keyword">this</span>.updater.enqueueForceUpdate(<span class="keyword">this</span>, callback, <span class="string">'forceUpdate'</span>);</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<h4 id="2-PrueComponent"><a href="#2-PrueComponent" class="headerlink" title="2.PrueComponent"></a>2.PrueComponent</h4><p>源码和Component 在同一个文件内部</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">ComponentDummy</span>(<span class="params"></span>) </span>&#123;&#125;</div><div class="line">ComponentDummy.prototype = Component.prototype;</div><div class="line"></div><div class="line"><span class="comment">/**</span></div><div class="line"> * Convenience component with default shallow equality check for sCU.</div><div class="line"> */</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">PureComponent</span>(<span class="params">props, context, updater</span>) </span>&#123;</div><div class="line">  <span class="keyword">this</span>.props = props;</div><div class="line">  <span class="keyword">this</span>.context = context;</div><div class="line">  <span class="comment">// If a component has string refs, we will assign a different object later.</span></div><div class="line">  <span class="keyword">this</span>.refs = emptyObject;</div><div class="line">  <span class="keyword">this</span>.updater = updater || ReactNoopUpdateQueue;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">const</span> pureComponentPrototype = (PureComponent.prototype = <span class="keyword">new</span> ComponentDummy());</div><div class="line">pureComponentPrototype.constructor = PureComponent;</div><div class="line"><span class="comment">// Avoid an extra prototype jump for these methods.</span></div><div class="line"><span class="built_in">Object</span>.assign(pureComponentPrototype, Component.prototype);</div><div class="line">pureComponentPrototype.isPureReactComponent = <span class="literal">true</span>; <span class="comment">// 和Component的区别</span></div></pre></td></tr></table></figure>
+<h4 id="3-createElement"><a href="#3-createElement" class="headerlink" title="3.createElement"></a>3.createElement</h4><p>源码地址：<a href="https://github.com/facebook/react/blob/master/packages/react/src/ReactBaseClasses.js" target="_blank" rel="external">https://github.com/facebook/react/blob/master/packages/react/src/ReactBaseClasses.js</a></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">createElement</span>(<span class="params">type, config, children</span>) </span>&#123;</div><div class="line">  <span class="keyword">let</span> propName;</div><div class="line"></div><div class="line">  <span class="comment">// Reserved names are extracted</span></div><div class="line">  <span class="keyword">const</span> props = &#123;&#125;;</div><div class="line"></div><div class="line">  <span class="keyword">let</span> key = <span class="literal">null</span>;</div><div class="line">  <span class="keyword">let</span> ref = <span class="literal">null</span>;</div><div class="line">  <span class="keyword">let</span> self = <span class="literal">null</span>;</div><div class="line">  <span class="keyword">let</span> source = <span class="literal">null</span>;</div><div class="line">	<span class="comment">// 将config赋值给props 处理ref、key两个特殊props</span></div><div class="line">  <span class="keyword">if</span> (config != <span class="literal">null</span>) &#123;</div><div class="line">    <span class="keyword">if</span> (hasValidRef(config)) &#123;</div><div class="line">      ref = config.ref;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">if</span> (hasValidKey(config)) &#123;</div><div class="line">      key = <span class="string">''</span> + config.key;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    self = config.__self === <span class="literal">undefined</span> ? <span class="literal">null</span> : config.__self;</div><div class="line">    source = config.__source === <span class="literal">undefined</span> ? <span class="literal">null</span> : config.__source;</div><div class="line">    <span class="comment">// Remaining properties are added to a new props object</span></div><div class="line">    <span class="keyword">for</span> (propName <span class="keyword">in</span> config) &#123;</div><div class="line">      <span class="keyword">if</span> (</div><div class="line">        hasOwnProperty.call(config, propName) &amp;&amp;</div><div class="line">        !RESERVED_PROPS.hasOwnProperty(propName)</div><div class="line">      ) &#123;</div><div class="line">        props[propName] = config[propName];</div><div class="line">      &#125;</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="comment">// 遍历多余的参数，处理为props.children</span></div><div class="line">  <span class="keyword">const</span> childrenLength = <span class="built_in">arguments</span>.length - <span class="number">2</span>;</div><div class="line">  <span class="keyword">if</span> (childrenLength === <span class="number">1</span>) &#123;</div><div class="line">    props.children = children;</div><div class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> (childrenLength &gt; <span class="number">1</span>) &#123;</div><div class="line">    <span class="keyword">const</span> childArray = <span class="built_in">Array</span>(childrenLength);</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; childrenLength; i++) &#123;</div><div class="line">      childArray[i] = <span class="built_in">arguments</span>[i + <span class="number">2</span>];</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">if</span> (__DEV__) &#123;</div><div class="line">      <span class="keyword">if</span> (<span class="built_in">Object</span>.freeze) &#123;</div><div class="line">        <span class="built_in">Object</span>.freeze(childArray);</div><div class="line">      &#125;</div><div class="line">    &#125;</div><div class="line">    props.children = childArray;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="comment">// Resolve default props</span></div><div class="line">  <span class="keyword">if</span> (type &amp;&amp; type.defaultProps) &#123;</div><div class="line">    <span class="keyword">const</span> defaultProps = type.defaultProps;</div><div class="line">    <span class="keyword">for</span> (propName <span class="keyword">in</span> defaultProps) &#123;</div><div class="line">      <span class="keyword">if</span> (props[propName] === <span class="literal">undefined</span>) &#123;</div><div class="line">        props[propName] = defaultProps[propName];</div><div class="line">      &#125;</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">return</span> ReactElement(</div><div class="line">    type,</div><div class="line">    key,</div><div class="line">    ref,</div><div class="line">    self,</div><div class="line">    source,</div><div class="line">    ReactCurrentOwner.current,</div><div class="line">    props,</div><div class="line">  );</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h4 id="4-ConcurrentMode"><a href="#4-ConcurrentMode" class="headerlink" title="4.ConcurrentMode"></a>4.ConcurrentMode</h4><h3 id="三、总结"><a href="#三、总结" class="headerlink" title="三、总结"></a>三、总结</h3><p>这几个api都比较简单、没做什么特殊的逻辑处理，简单易懂</p>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2019" class="archive-year">2019</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/12/26/1.express-http-proxy 代理中间件/" class="archive-article-date">
-  	<time datetime="2019-12-26T07:07:39.755Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-26</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://wangjing991.github.io/2019/10/25/React源码解析基础API/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/12/25/服务器相关知识/" class="archive-article-date">
-  	<time datetime="2019-12-25T05:39:42.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-25</time>
-</a>
-        </div>
-    	 
+<nav id="article-nav">
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/12/25/服务器相关知识/">服务器相关知识</a>
-    </h1>
+    <a href="/2019/10/31/React源码解析（二）react-dom/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          React源码解析（二）react-dom
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2019/10/24/multirepo_monorepo/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">multirepo</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+
+
+
+  
+  
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/12/24/Mongodb笔记/" class="archive-article-date">
-  	<time datetime="2019-12-24T06:29:38.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-24</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/12/24/Mongodb笔记/">Mongodb安装</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
   
-    </div></section>
-  
-
-    
 
 
           </div>
@@ -272,8 +322,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,

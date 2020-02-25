@@ -154,6 +154,115 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-electrom" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>1.主要应用 api</p>
+<p><code>browserWindow</code> 负责创建窗口</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">// cmd js</div><div class="line">const  &#123; app,BrowserWindow&#125; = require(&apos;electron&apos;)</div><div class="line"></div><div class="line">1.app.on(&apos;ready&apos;,()=&gt;&#123;</div><div class="line">	let mainWindow = new BrowserWindow(&#123;</div><div class="line">		windth: 800,</div><div class="line">		height: 600,</div><div class="line">		webPreferences: &#123;</div><div class="line">			nodeIntegration: true</div><div class="line">      preload: path.join(__dirname, &apos;preload.js&apos;)</div><div class="line">    &#125;</div><div class="line">	&#125;)</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+<p>2.进程之间的通讯</p>
+<p>electron 使用IPC 在进程间通讯</p>
+<p><img src="/Users/wangjing/Library/Application Support/typora-user-images/image-20200114145121163.png" alt="image-20200114145121163"></p>
+<h5 id="1-ipcMain主进程"><a href="#1-ipcMain主进程" class="headerlink" title="1.ipcMain主进程"></a>1.ipcMain主进程</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">const &#123; ipcMain&#125;=require(&apos;electron&apos;)</div><div class="line">// 主进程 监听消息</div><div class="line">ipcMain.on(&apos;message&apos;, ( event, msg ) =&gt; &#123;</div><div class="line">        console.log(msg, &apos;msg&apos;, event)</div><div class="line">        // 主进程回复消息</div><div class="line">        event.reply(&apos;reply&apos;, &apos;hello form main process&apos;)</div><div class="line">    &#125;)</div></pre></td></tr></table></figure>
+<h5 id="2-ipcRenderer-渲染进程"><a href="#2-ipcRenderer-渲染进程" class="headerlink" title="2.ipcRenderer 渲染进程"></a>2.ipcRenderer 渲染进程</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">const &#123; ipcRenderer &#125; = require(&apos;electron&apos;)</div><div class="line">document.getElementById(&apos;send&apos;).addEventListener(&apos;click&apos;, () =&gt; &#123;</div><div class="line">				//渲染进程 发送消息</div><div class="line">        ipcRenderer.send(&apos;message&apos;, &apos;hello form renderer &apos;)</div><div class="line">    &#125;)</div><div class="line">    // 渲染进程 监听消息</div><div class="line">    ipcRenderer.on(&apos;reply&apos;, ( event, msg ) =&gt; &#123;</div><div class="line">        document.getElementById(&apos;message&apos;).innerHTML = msg</div><div class="line">    &#125;)</div></pre></td></tr></table></figure>
+<h5 id="3-使用remote模块实现跨进程访问"><a href="#3-使用remote模块实现跨进程访问" class="headerlink" title="3.使用remote模块实现跨进程访问"></a>3.使用remote模块实现跨进程访问</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">const &#123; BrowserWindow &#125; = require(&apos;electron&apos;).remote</div><div class="line">        let win = new BrowserWindow(&#123; width: 800, height: 600 &#125;)</div><div class="line">        win.loadURL(&apos;https://baidu.com&apos;)</div></pre></td></tr></table></figure>
+<p>Remote可以调用 mainWindow里面的方法</p>
+<ol>
+<li><p>Electron 工具devtron</p>
+<p> <code>npm i --save-dee devtron</code></p>
+</li>
+</ol>
+<h4 id="工具"><a href="#工具" class="headerlink" title="工具"></a>工具</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">concurrently</div><div class="line">wait-on </div><div class="line">cross-env</div></pre></td></tr></table></figure>
+<h4 id="electron打包工具"><a href="#electron打包工具" class="headerlink" title="electron打包工具"></a>electron打包工具</h4><ol>
+<li><p>Electron-builder</p>
+<p>1.修改package.json里面的homepage字段确保打包路径正确</p>
+<p>2.directories: {buiildResources: “assets”} 打包静态图片配置</p>
+<p><a href="https://www.electron.build/configuration/configuration" target="_blank" rel="external">https://www.electron.build/configuration/configuration</a></p>
+</li>
+</ol>
+<p>2.优化打包</p>
+<ul>
+<li>react项目 nodemodule 移到devDependencies里面去 </li>
+<li></li>
+</ul>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/01/15/electrom/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+  
+    <article id="post-Typescript泛型" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/01/02/Typescript泛型/">Typescript泛型</a>
+    </h1>
+  
+
+        
+        <a href="/2020/01/02/Typescript泛型/" class="archive-article-date">
+  	<time datetime="2020-01-02T06:02:47.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-01-02</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="一、泛型"><a href="#一、泛型" class="headerlink" title="一、泛型"></a>一、泛型</h3><h5 id="函数泛型"><a href="#函数泛型" class="headerlink" title="函数泛型"></a>函数泛型</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">function log&lt;T&gt;(value: T):T&#123;</div><div class="line">	return value</div><div class="line">&#125;</div><div class="line"></div><div class="line">log&lt;string[]&gt;([&apos;1&apos;,&apos;2&apos;])</div><div class="line">log([&apos;1&apos;,&apos;2&apos;])</div><div class="line"></div><div class="line">type Log =&lt;T&gt;(value: T)=&gt; T</div><div class="line">let myLog: Log = log</div><div class="line"></div><div class="line">//接口</div><div class="line">interface Log &#123;</div><div class="line">	&lt;T&gt;(value:T): T</div><div class="line">&#125;</div><div class="line">interface Log&lt;T&gt; &#123;</div><div class="line">	(value:T): T</div><div class="line">&#125;</div><div class="line">let myLog: Log&lt;number&gt; = log</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">class Log&lt;T&gt;&#123;</div><div class="line">	run(value:T)&#123;</div><div class="line">	  console.log(value)</div><div class="line">	  return value</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line">let log1 = new Log&lt;number&gt;()</div><div class="line">log1.run(1)</div><div class="line">let log2 = new Log()</div><div class="line">log2.run(&apos;1&apos;)</div><div class="line"></div><div class="line">interface Length&#123;</div><div class="line">	length: number</div><div class="line">&#125;</div><div class="line">function log&lt;T extends Length&gt;(value: T):T&#123;</div><div class="line">	return value</div><div class="line">&#125;</div><div class="line">log([1,2])</div><div class="line">log(&apos;1234&apos;)</div><div class="line">log(&#123;length:1&#125;)</div></pre></td></tr></table></figure>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/01/02/Typescript泛型/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+  
     <article id="post-1.express-http-proxy 代理中间件" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -542,134 +651,6 @@
 
 
   
-    <article id="post-canvas" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/08/11/canvas/">canvas</a>
-    </h1>
-  
-
-        
-        <a href="/2017/08/11/canvas/" class="archive-article-date">
-  	<time datetime="2017-08-11T07:56:53.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-08-11</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="canvas定义"><a href="#canvas定义" class="headerlink" title="canvas定义"></a>canvas定义</h2><p>[canvas]是 <a href="https://developer.mozilla.org/zh-CN/docs/HTML/HTML5" target="_blank" rel="external">HTML5</a> 新增的元素，可用于通过使用<a href="https://developer.mozilla.org/zh-CN/docs/JavaScript" target="_blank" rel="external">JavaScript</a>中的脚本来绘制图形。例如，它可以用于绘制图形，制作照片，创建动画，甚至可以进行实时视频处理或渲染。</p>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">canvas</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">javascript</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/08/11/canvas/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-  
-    <article id="post-箭头函数" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/06/13/箭头函数/">箭头函数</a>
-    </h1>
-  
-
-        
-        <a href="/2017/06/13/箭头函数/" class="archive-article-date">
-  	<time datetime="2017-06-13T13:03:59.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-13</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="简言"><a href="#简言" class="headerlink" title="简言"></a>简言</h2><p>一个箭头函数表达式的语法比一个函数表达式更短，并且不绑定自己的 this，arguments，super或 new.target。</p>
-<p><img src="/img/飞机.png" alt="飞机"></p>
-<p>这些函数表达式最适合用于非方法函数，并且它们不能用作构造函数。</p>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">javascript</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">function</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/06/13/箭头函数/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
@@ -687,7 +668,7 @@
 <script src="https://img1.cache.netease.com/f2e/tie/yun/sdk/loader.js"></script>
 
     	<div class="footer-left">
-    		&copy; 2019 Jimwan
+    		&copy; 2020 Jimwan
     	</div>
       	<div class="footer-right">
       		<span id="busuanzi_container_site_pv" style = "">
@@ -773,7 +754,7 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">canvas</a>
+                <a href="javascript:void(0)" class="js-tag color5">代码管理</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -781,11 +762,11 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">代码管理</a>
+                <a href="javascript:void(0)" class="js-tag color4">function</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">function</a>
+                <a href="javascript:void(0)" class="js-tag color2">canvas</a>
               </li>
             
             <div class="clearfix"></div>

@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html>
-<head>
+<head><meta name="generator" content="Hexo 3.9.0">
   <meta charset="utf-8">
   
   <meta name="renderer" content="webkit">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://wangjing991.github.io">
   <title>天生骄傲</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -14,6 +14,7 @@
 <meta property="og:url" content="http://wangjing991.github.io/index.html">
 <meta property="og:site_name" content="天生骄傲">
 <meta property="og:description" content="诗和远方">
+<meta property="og:locale" content="default">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="天生骄傲">
 <meta name="twitter:description" content="诗和远方">
@@ -35,7 +36,7 @@
   
 
 </head>
-
+</html>
 <body>
   <div id="container" q-class="show:isCtnShow">
     <canvas id="anm-canvas" class="anm-canvas"></canvas>
@@ -174,8 +175,8 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="一、泛型"><a href="#一、泛型" class="headerlink" title="一、泛型"></a>一、泛型</h3><h5 id="函数泛型"><a href="#函数泛型" class="headerlink" title="函数泛型"></a>函数泛型</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">function log&lt;T&gt;(value: T):T&#123;</div><div class="line">	return value</div><div class="line">&#125;</div><div class="line"></div><div class="line">log&lt;string[]&gt;([&apos;1&apos;,&apos;2&apos;])</div><div class="line">log([&apos;1&apos;,&apos;2&apos;])</div><div class="line"></div><div class="line">type Log =&lt;T&gt;(value: T)=&gt; T</div><div class="line">let myLog: Log = log</div><div class="line"></div><div class="line">//接口</div><div class="line">interface Log &#123;</div><div class="line">	&lt;T&gt;(value:T): T</div><div class="line">&#125;</div><div class="line">interface Log&lt;T&gt; &#123;</div><div class="line">	(value:T): T</div><div class="line">&#125;</div><div class="line">let myLog: Log&lt;number&gt; = log</div></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">class Log&lt;T&gt;&#123;</div><div class="line">	run(value:T)&#123;</div><div class="line">	  console.log(value)</div><div class="line">	  return value</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line">let log1 = new Log&lt;number&gt;()</div><div class="line">log1.run(1)</div><div class="line">let log2 = new Log()</div><div class="line">log2.run(&apos;1&apos;)</div><div class="line"></div><div class="line">interface Length&#123;</div><div class="line">	length: number</div><div class="line">&#125;</div><div class="line">function log&lt;T extends Length&gt;(value: T):T&#123;</div><div class="line">	return value</div><div class="line">&#125;</div><div class="line">log([1,2])</div><div class="line">log(&apos;1234&apos;)</div><div class="line">log(&#123;length:1&#125;)</div></pre></td></tr></table></figure>
+        <h3 id="一、泛型"><a href="#一、泛型" class="headerlink" title="一、泛型"></a>一、泛型</h3><h5 id="函数泛型"><a href="#函数泛型" class="headerlink" title="函数泛型"></a>函数泛型</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">function log&lt;T&gt;(value: T):T&#123;</span><br><span class="line">	return value</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">log&lt;string[]&gt;([&apos;1&apos;,&apos;2&apos;])</span><br><span class="line">log([&apos;1&apos;,&apos;2&apos;])</span><br><span class="line"></span><br><span class="line">type Log =&lt;T&gt;(value: T)=&gt; T</span><br><span class="line">let myLog: Log = log</span><br><span class="line"></span><br><span class="line">//接口</span><br><span class="line">interface Log &#123;</span><br><span class="line">	&lt;T&gt;(value:T): T</span><br><span class="line">&#125;</span><br><span class="line">interface Log&lt;T&gt; &#123;</span><br><span class="line">	(value:T): T</span><br><span class="line">&#125;</span><br><span class="line">let myLog: Log&lt;number&gt; = log</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">class Log&lt;T&gt;&#123;</span><br><span class="line">	run(value:T)&#123;</span><br><span class="line">	  console.log(value)</span><br><span class="line">	  return value</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">let log1 = new Log&lt;number&gt;()</span><br><span class="line">log1.run(1)</span><br><span class="line">let log2 = new Log()</span><br><span class="line">log2.run(&apos;1&apos;)</span><br><span class="line"></span><br><span class="line">interface Length&#123;</span><br><span class="line">	length: number</span><br><span class="line">&#125;</span><br><span class="line">function log&lt;T extends Length&gt;(value: T):T&#123;</span><br><span class="line">	return value</span><br><span class="line">&#125;</span><br><span class="line">log([1,2])</span><br><span class="line">log(&apos;1234&apos;)</span><br><span class="line">log(&#123;length:1&#125;)</span><br></pre></td></tr></table></figure>
 
       
 
@@ -236,70 +237,6 @@
 
 
   
-    <article id="post-electron基础" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/12/25/electron基础/">electron基础</a>
-    </h1>
-  
-
-        
-        <a href="/2019/12/25/electron基础/" class="archive-article-date">
-  	<time datetime="2019-12-25T05:39:42.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-25</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="一、简介"><a href="#一、简介" class="headerlink" title="一、简介"></a>一、简介</h3><ol>
-<li>electron使用html，css和JavaScript来构建块跨平台桌面应用程序（Mac，Windows和Linux）的一个开源库。</li>
-<li>electron将Chromium和Node.js合并到同一个运行环境。</li>
-<li>electron只使用了Chromium的渲染库而不是全部组件，这使得升级Chromium更加容易，但缺少了Google Chrome里的一些浏览器相关的特性。</li>
-</ol>
-<h3 id=""><a href="#" class="headerlink" title=""></a></h3>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">electron</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/12/25/electron基础/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-  
     <article id="post-服务器相关知识" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -335,6 +272,69 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2019/12/25/服务器相关知识/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+  
+    <article id="post-electron基础" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/12/25/electron基础/">electron基础</a>
+    </h1>
+  
+
+        
+        <a href="/2019/12/25/electron基础/" class="archive-article-date">
+  	<time datetime="2019-12-25T05:39:42.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-25</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="一、简介"><a href="#一、简介" class="headerlink" title="一、简介"></a>一、简介</h3><ol>
+<li>electron使用html，css和JavaScript来构建块跨平台桌面应用程序（Mac，Windows和Linux）的一个开源库。</li>
+<li>electron将Chromium和Node.js合并到同一个运行环境。</li>
+<li>electron只使用了Chromium的渲染库而不是全部组件，这使得升级Chromium更加容易，但缺少了Google Chrome里的一些浏览器相关的特性。</li>
+</ol>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">electron</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/12/25/electron基础/">展开全文 >></a>
         </p>
       
 
@@ -419,7 +419,7 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p>在我们的项目当中一般使用的项目都有一个入口文件，通用代码如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">import React from &apos;react&apos;;</div><div class="line">import ReactDOM from &apos;react-dom&apos;;</div><div class="line">import App from &apos;./App&apos;; // 应用根组件， bable编译好后的React.createElement文件</div><div class="line"></div><div class="line">ReactDOM.render(&lt;App /&gt;, document.getElementById(&apos;root&apos;)); // 应用挂载容器DOM</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">import React from &apos;react&apos;;</span><br><span class="line">import ReactDOM from &apos;react-dom&apos;;</span><br><span class="line">import App from &apos;./App&apos;; // 应用根组件， bable编译好后的React.createElement文件</span><br><span class="line"></span><br><span class="line">ReactDOM.render(&lt;App /&gt;, document.getElementById(&apos;root&apos;)); // 应用挂载容器DOM</span><br></pre></td></tr></table></figure>
         
       
 
@@ -468,7 +468,7 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p>本文介绍React 常用的几个基础API，学习源码的第一步；</p>
-<h3 id="一、react-暴露出来的api列表"><a href="#一、react-暴露出来的api列表" class="headerlink" title="一、react 暴露出来的api列表"></a>一、react 暴露出来的api列表</h3><p>源码地址： <a href="https://github.com/facebook/react/blob/master/packages/react/src/React.js" target="_blank" rel="external">https://github.com/facebook/react/blob/master/packages/react/src/React.js</a></p>
+<h3 id="一、react-暴露出来的api列表"><a href="#一、react-暴露出来的api列表" class="headerlink" title="一、react 暴露出来的api列表"></a>一、react 暴露出来的api列表</h3><p>源码地址： <a href="https://github.com/facebook/react/blob/master/packages/react/src/React.js" target="_blank" rel="noopener">https://github.com/facebook/react/blob/master/packages/react/src/React.js</a></p>
         
       
 
@@ -766,15 +766,15 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">canvas</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">javascript</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">function</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">canvas</a>
               </li>
             
             <div class="clearfix"></div>

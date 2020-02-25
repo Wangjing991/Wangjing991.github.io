@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html>
-<head>
+<head><meta name="generator" content="Hexo 3.9.0">
   <meta charset="utf-8">
   
   <meta name="renderer" content="webkit">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://wangjing991.github.io">
   <title>Mongodb安装 | 天生骄傲</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -14,6 +14,7 @@
 <meta property="og:url" content="http://wangjing991.github.io/2019/12/24/Mongodb笔记/index.html">
 <meta property="og:site_name" content="天生骄傲">
 <meta property="og:description" content="1.mongodb 文件目录 usr/local/mongodb">
+<meta property="og:locale" content="default">
 <meta property="og:updated_time" content="2019-12-25T10:31:37.805Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Mongodb安装">
@@ -36,7 +37,7 @@
   
 
 </head>
-
+</html>
 <body>
   <div id="container" q-class="show:isCtnShow">
     <canvas id="anm-canvas" class="anm-canvas"></canvas>
@@ -177,16 +178,16 @@
 <p><code>usr/local/mongodb</code></p>
 <a id="more"></a>
 <p>2.mongodb.conf 配置文件介绍</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"># 设置端口号（默认的端口号是 27017）</div><div class="line">port = 27018</div><div class="line">#远程连接要指定ip 不然无法连接。0.0.0.0不限制ip访问,并开启对</div><div class="line">应端口</div><div class="line">bind_ip=0.0.0.0</div><div class="line"></div><div class="line"># 设置数据文件的存放目录</div><div class="line">dbpath = /usr/local/mongodb/data/koa2-blog/db</div><div class="line"></div><div class="line"># 设置日志文件的存放目录及其日志文件名</div><div class="line">logpath = /usr/local/mongodb/data/koa2-blog/log/mongodb.log</div><div class="line"></div><div class="line"># 设置每个数据库将被保存在一个单独的目录</div><div class="line">directoryperdb = true</div><div class="line"></div><div class="line"># 设置为以守护进程的方式运行，即在后台运行</div><div class="line">fork = true</div><div class="line"></div><div class="line"># 日志追加</div><div class="line">logappend=true</div><div class="line"># hh</div><div class="line"># 访问权限</div><div class="line">auth=false</div><div class="line">~</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"># 设置端口号（默认的端口号是 27017）</span><br><span class="line">port = 27018</span><br><span class="line">#远程连接要指定ip 不然无法连接。0.0.0.0不限制ip访问,并开启对</span><br><span class="line">应端口</span><br><span class="line">bind_ip=0.0.0.0</span><br><span class="line"></span><br><span class="line"># 设置数据文件的存放目录</span><br><span class="line">dbpath = /usr/local/mongodb/data/koa2-blog/db</span><br><span class="line"></span><br><span class="line"># 设置日志文件的存放目录及其日志文件名</span><br><span class="line">logpath = /usr/local/mongodb/data/koa2-blog/log/mongodb.log</span><br><span class="line"></span><br><span class="line"># 设置每个数据库将被保存在一个单独的目录</span><br><span class="line">directoryperdb = true</span><br><span class="line"></span><br><span class="line"># 设置为以守护进程的方式运行，即在后台运行</span><br><span class="line">fork = true</span><br><span class="line"></span><br><span class="line"># 日志追加</span><br><span class="line">logappend=true</span><br><span class="line"># hh</span><br><span class="line"># 访问权限</span><br><span class="line">auth=false</span><br><span class="line">~</span><br></pre></td></tr></table></figure>
 <p>参数解释：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">参数解释: </div><div class="line">--dbpath 数据库路径(数据文件)</div><div class="line">--logpath 日志文件路径</div><div class="line">--master 指定为主机器</div><div class="line">--slave 指定为从机器</div><div class="line">--source 指定主机器的IP地址</div><div class="line">--pologSize 指定日志文件大小不超过64M.因为resync是非常操作量大且耗时，最好通过设置一个足够大的oplogSize来避免resync(默认的 oplog大小是空闲磁盘大小的5%)。</div><div class="line">--logappend 日志文件末尾添加，即使用追加的方式写日志</div><div class="line">--journal 启用日志</div><div class="line">--port 启用端口号</div><div class="line">--fork 在后台运行</div><div class="line">--only 指定只复制哪一个数据库</div><div class="line">--slavedelay 指从复制检测的时间间隔</div><div class="line">--auth 是否需要验证权限登录(用户名和密码)</div><div class="line">--syncdelay 数据写入硬盘的时间（秒），0是不等待，直接写入</div><div class="line">--notablescan 不允许表扫描</div><div class="line">--maxConns 最大的并发连接数，默认2000  </div><div class="line">--pidfilepath 指定进程文件，不指定则不产生进程文件</div><div class="line">--bind_ip 绑定IP，绑定后只能绑定的IP访问服务</div><div class="line">复</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">参数解释: </span><br><span class="line">--dbpath 数据库路径(数据文件)</span><br><span class="line">--logpath 日志文件路径</span><br><span class="line">--master 指定为主机器</span><br><span class="line">--slave 指定为从机器</span><br><span class="line">--source 指定主机器的IP地址</span><br><span class="line">--pologSize 指定日志文件大小不超过64M.因为resync是非常操作量大且耗时，最好通过设置一个足够大的oplogSize来避免resync(默认的 oplog大小是空闲磁盘大小的5%)。</span><br><span class="line">--logappend 日志文件末尾添加，即使用追加的方式写日志</span><br><span class="line">--journal 启用日志</span><br><span class="line">--port 启用端口号</span><br><span class="line">--fork 在后台运行</span><br><span class="line">--only 指定只复制哪一个数据库</span><br><span class="line">--slavedelay 指从复制检测的时间间隔</span><br><span class="line">--auth 是否需要验证权限登录(用户名和密码)</span><br><span class="line">--syncdelay 数据写入硬盘的时间（秒），0是不等待，直接写入</span><br><span class="line">--notablescan 不允许表扫描</span><br><span class="line">--maxConns 最大的并发连接数，默认2000  </span><br><span class="line">--pidfilepath 指定进程文件，不指定则不产生进程文件</span><br><span class="line">--bind_ip 绑定IP，绑定后只能绑定的IP访问服务</span><br><span class="line">复</span><br></pre></td></tr></table></figure>
 <p>3.自定义服务</p>
 <p>在/lib/systemd/system/目录下新建mongodb.service文件，内容如下</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">[Unit]</div><div class="line">     Description=mongodb</div><div class="line">     After=network.target remote-fs.target nss-lookup.target</div><div class="line">[Service]</div><div class="line">     Type=forking</div><div class="line">     ExecStart=/usr/local/mongodb/bin/mongod -f /usr/local/mongodb/conf/mongodb.conf</div><div class="line">     ExecReload=/bin/kill -s HUP $MAINPID</div><div class="line">     ExecStop=/usr/local/mongodb/bin/mongod --shutdown -f /usr/local/mongodb/conf/mongodb.conf</div><div class="line">     PrivateTmp=true</div><div class="line">[Install]</div><div class="line">    WantedBy=multi-user.target</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">[Unit]</span><br><span class="line">     Description=mongodb</span><br><span class="line">     After=network.target remote-fs.target nss-lookup.target</span><br><span class="line">[Service]</span><br><span class="line">     Type=forking</span><br><span class="line">     ExecStart=/usr/local/mongodb/bin/mongod -f /usr/local/mongodb/conf/mongodb.conf</span><br><span class="line">     ExecReload=/bin/kill -s HUP $MAINPID</span><br><span class="line">     ExecStop=/usr/local/mongodb/bin/mongod --shutdown -f /usr/local/mongodb/conf/mongodb.conf</span><br><span class="line">     PrivateTmp=true</span><br><span class="line">[Install]</span><br><span class="line">    WantedBy=multi-user.target</span><br></pre></td></tr></table></figure>
 <p>4.启动关闭服务，设置开机启动</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">#启动服务 </div><div class="line">systemctl start mongodb.service   </div><div class="line">#关闭服务   </div><div class="line">systemctl stop mongodb.service   </div><div class="line">#开机启动   </div><div class="line">systemctl enable mongodb.service </div><div class="line"># 查看状态</div><div class="line">systemctl status mongodb.service</div><div class="line"># 如果mongodb.service配置错误 在更改后记得重新加载文件</div><div class="line">systemctl daemon-reload</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">#启动服务 </span><br><span class="line">systemctl start mongodb.service   </span><br><span class="line">#关闭服务   </span><br><span class="line">systemctl stop mongodb.service   </span><br><span class="line">#开机启动   </span><br><span class="line">systemctl enable mongodb.service </span><br><span class="line"># 查看状态</span><br><span class="line">systemctl status mongodb.service</span><br><span class="line"># 如果mongodb.service配置错误 在更改后记得重新加载文件</span><br><span class="line">systemctl daemon-reload</span><br></pre></td></tr></table></figure>
 <p>5.设置mongo、mongod命令为全局命令</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">ln -s /usr/local/mongodb/bin/mongo  /usr/local/bin/mongo</div><div class="line">ln -s /usr/local/mongodb/bin/mongod  /usr/local/bin/mongod</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ln -s /usr/local/mongodb/bin/mongo  /usr/local/bin/mongo</span><br><span class="line">ln -s /usr/local/mongodb/bin/mongod  /usr/local/bin/mongod</span><br></pre></td></tr></table></figure>
 <p>6.链接数据库</p>
 <p>7.设置数据库访问权限</p>
 <ul>
@@ -194,14 +195,14 @@
 <p><code>use admin</code></p>
 </li>
 <li><p>创建一个管理员账户</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">db.createUser(&#123;user:&quot;admin&quot;,pwd:&quot;wz123&quot;,roles:[&#123;role:&quot;userAdminAnyDatabase&quot;, db: &quot;admin&quot;&#125;]&#125;)</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">db.createUser(&#123;user:&quot;admin&quot;,pwd:&quot;wz123&quot;,roles:[&#123;role:&quot;userAdminAnyDatabase&quot;, db: &quot;admin&quot;&#125;]&#125;)</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>开启权限验证</p>
 <p>在/usr/local/mongodb/conf/mongodb.conf中设置</p>
 <p><code>访问权限 auth=true</code></p>
 </li>
 </ul>
-<p>参考链接：<a href="https://juejin.im/post/5abb32d2f265da23a141f35c" target="_blank" rel="external">https://juejin.im/post/5abb32d2f265da23a141f35c</a></p>
+<p>参考链接：<a href="https://juejin.im/post/5abb32d2f265da23a141f35c" target="_blank" rel="noopener">https://juejin.im/post/5abb32d2f265da23a141f35c</a></p>
 
       
 
@@ -295,11 +296,11 @@
   
 <nav id="article-nav">
   
-    <a href="/2019/12/25/服务器相关知识/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2019/12/25/electron基础/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          服务器相关知识
+          electron基础
         
       </div>
     </a>
@@ -430,15 +431,15 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">canvas</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">javascript</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">function</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">canvas</a>
               </li>
             
             <div class="clearfix"></div>

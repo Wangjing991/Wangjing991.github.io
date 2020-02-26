@@ -180,6 +180,7 @@
       
         <h2 id="canvas定义"><a href="#canvas定义" class="headerlink" title="canvas定义"></a>canvas定义</h2><p>[canvas]是 <a href="https://developer.mozilla.org/zh-CN/docs/HTML/HTML5" target="_blank" rel="noopener">HTML5</a> 新增的元素，可用于通过使用<a href="https://developer.mozilla.org/zh-CN/docs/JavaScript" target="_blank" rel="noopener">JavaScript</a>中的脚本来绘制图形。例如，它可以用于绘制图形，制作照片，创建动画，甚至可以进行实时视频处理或渲染。</p>
 <a id="more"></a>
+
 <h2 id="一、基本用法"><a href="#一、基本用法" class="headerlink" title="一、基本用法"></a>一、基本用法</h2><p><code>&lt;canvas&gt;&lt;/canvas&gt;</code></p>
 <ol>
 <li><p>使用 canvas 标签, 即可在页面中开辟一格区域. 可以设置其 width 和 height 设置该区域的尺寸.</p>
@@ -199,107 +200,99 @@
 <h2 id="二、基本API"><a href="#二、基本API" class="headerlink" title="二、基本API"></a>二、基本API</h2><h4 id="绘制直线"><a href="#绘制直线" class="headerlink" title="绘制直线"></a>绘制直线</h4><table>
 <thead>
 <tr>
-<th style="text-align:left">名称</th>
+<th align="left">名称</th>
 <th>备注</th>
 </tr>
 </thead>
-<tbody>
-<tr>
-<td style="text-align:left">beginPath()</td>
+<tbody><tr>
+<td align="left">beginPath()</td>
 <td>新建一条路径，生成之后，图形绘制命令被指向到路径上生成路径。</td>
 </tr>
 <tr>
-<td style="text-align:left">closePath()</td>
+<td align="left">closePath()</td>
 <td>闭合路径之后图形绘制命令又重新指向到上下文中。</td>
 </tr>
 <tr>
-<td style="text-align:left">stroke()</td>
+<td align="left">stroke()</td>
 <td>通过线条来绘制图形轮廓。</td>
 </tr>
 <tr>
-<td style="text-align:left">strokeStyle</td>
+<td align="left">strokeStyle</td>
 <td>设置线条的样式（颜色）</td>
 </tr>
 <tr>
-<td style="text-align:left">fill()</td>
+<td align="left">fill()</td>
 <td>通过填充路径的内容区域生成实心的图形。</td>
 </tr>
 <tr>
-<td style="text-align:left">fillStyle</td>
+<td align="left">fillStyle</td>
 <td>设置填充样式（颜色）</td>
 </tr>
 <tr>
-<td style="text-align:left">moveTo(<em>x</em>, <em>y</em>)</td>
+<td align="left">moveTo(<em>x</em>, <em>y</em>)</td>
 <td>将笔触移动到指定的坐标x以及y上</td>
 </tr>
 <tr>
-<td style="text-align:left"><a href="https://developer.mozilla.org/zh-CN/docs/Web/API/CanvasRenderingContext2D/lineTo" target="_blank" rel="noopener"><code>lineTo(x, y)</code></a></td>
+<td align="left"><a href="https://developer.mozilla.org/zh-CN/docs/Web/API/CanvasRenderingContext2D/lineTo" target="_blank" rel="noopener"><code>lineTo(x, y)</code></a></td>
 <td>绘制一条从当前位置到指定x以及y位置的直线。</td>
 </tr>
-</tbody>
-</table>
+</tbody></table>
 <h4 id="绘制矩形"><a href="#绘制矩形" class="headerlink" title="绘制矩形"></a>绘制矩形</h4><table>
 <thead>
 <tr>
-<th style="text-align:left">名称</th>
+<th align="left">名称</th>
 <th>备注</th>
 </tr>
 </thead>
-<tbody>
-<tr>
-<td style="text-align:left"><a href="https://developer.mozilla.org/zh-CN/docs/Web/API/CanvasRenderingContext2D/fillRect" target="_blank" rel="noopener"><code>fillRect(x, y, width, height)</code></a></td>
+<tbody><tr>
+<td align="left"><a href="https://developer.mozilla.org/zh-CN/docs/Web/API/CanvasRenderingContext2D/fillRect" target="_blank" rel="noopener"><code>fillRect(x, y, width, height)</code></a></td>
 <td>绘制一个填充的矩形</td>
 </tr>
 <tr>
-<td style="text-align:left"><a href="https://developer.mozilla.org/zh-CN/docs/Web/API/CanvasRenderingContext2D/strokeRect" target="_blank" rel="noopener"><code>strokeRect(x, y, width, height)</code></a></td>
+<td align="left"><a href="https://developer.mozilla.org/zh-CN/docs/Web/API/CanvasRenderingContext2D/strokeRect" target="_blank" rel="noopener"><code>strokeRect(x, y, width, height)</code></a></td>
 <td>绘制一个矩形的边框</td>
 </tr>
 <tr>
-<td style="text-align:left"><a href="https://developer.mozilla.org/zh-CN/docs/Web/API/CanvasRenderingContext2D/clearRect" target="_blank" rel="noopener"><code>clearRect(x, y, width, height)</code></a></td>
+<td align="left"><a href="https://developer.mozilla.org/zh-CN/docs/Web/API/CanvasRenderingContext2D/clearRect" target="_blank" rel="noopener"><code>clearRect(x, y, width, height)</code></a></td>
 <td>清除指定矩形区域，让清除部分完全透明</td>
 </tr>
-</tbody>
-</table>
+</tbody></table>
 <h4 id="绘制圆"><a href="#绘制圆" class="headerlink" title="绘制圆"></a>绘制圆</h4><table>
 <thead>
 <tr>
-<th style="text-align:left">名称</th>
+<th align="left">名称</th>
 <th>备注</th>
 </tr>
 </thead>
-<tbody>
-<tr>
-<td style="text-align:left"><a href="https://developer.mozilla.org/zh-CN/docs/Web/API/CanvasRenderingContext2D/arc" target="_blank" rel="noopener"><code>arc(x, y, radius, startAngle, endAngle, anticlockwise)</code></a></td>
+<tbody><tr>
+<td align="left"><a href="https://developer.mozilla.org/zh-CN/docs/Web/API/CanvasRenderingContext2D/arc" target="_blank" rel="noopener"><code>arc(x, y, radius, startAngle, endAngle, anticlockwise)</code></a></td>
 <td>画一个以（x,y）为圆心的以radius为半径的圆弧（圆），从startAngle开始到endAngle结束，按照anticlockwise给定的方向（默认为顺时针）来生成。</td>
 </tr>
 <tr>
-<td style="text-align:left"><a href="https://developer.mozilla.org/zh-CN/docs/Web/API/CanvasRenderingContext2D/arcTo" target="_blank" rel="noopener"><code>arcTo(x1, y1, x2, y2, radius)</code></a></td>
+<td align="left"><a href="https://developer.mozilla.org/zh-CN/docs/Web/API/CanvasRenderingContext2D/arcTo" target="_blank" rel="noopener"><code>arcTo(x1, y1, x2, y2, radius)</code></a></td>
 <td>根据给定的控制点和半径画一段圆弧，再以直线连接两个控制点。</td>
 </tr>
-</tbody>
-</table>
+</tbody></table>
 <h4 id="变换"><a href="#变换" class="headerlink" title="变换"></a>变换</h4><table>
 <thead>
 <tr>
 <th>名称</th>
-<th style="text-align:left">备注</th>
+<th align="left">备注</th>
 </tr>
 </thead>
-<tbody>
-<tr>
+<tbody><tr>
 <td>translate( x, y )</td>
-<td style="text-align:left">该方法将坐标进行平移.  x 表示水平移动, 正数向右, 负数向左.  y 表示垂直移动, 正数向下, 负数向上.  变换可以重复调用, 变换是可以累加的.</td>
+<td align="left">该方法将坐标进行平移.  x 表示水平移动, 正数向右, 负数向左.  y 表示垂直移动, 正数向下, 负数向上.  变换可以重复调用, 变换是可以累加的.</td>
 </tr>
 <tr>
 <td>rotate( radian )</td>
-<td style="text-align:left">该方法将坐标轴进行旋转变换.  参数是弧度, 表示旋转的方式. 正数表示顺时针旋转, 负数表示逆时针旋转.</td>
+<td align="left">该方法将坐标轴进行旋转变换.  参数是弧度, 表示旋转的方式. 正数表示顺时针旋转, 负数表示逆时针旋转.</td>
 </tr>
 <tr>
 <td>scale( x, y )</td>
-<td style="text-align:left">该方法实现水平与垂直的缩放.  参数 x 控制水平缩放倍率. 传参 1 表示不作缩放, 传入大于 1 的数字表示扩大.  参数 y 控制垂直缩放倍率. 传参 1 表示不作缩放, 传入大于 1 的数字表示扩大.</td>
+<td align="left">该方法实现水平与垂直的缩放.  参数 x 控制水平缩放倍率. 传参 1 表示不作缩放, 传入大于 1 的数字表示扩大.  参数 y 控制垂直缩放倍率. 传参 1 表示不作缩放, 传入大于 1 的数字表示扩大.</td>
 </tr>
-</tbody>
-</table>
+</tbody></table>
 <h4 id="getContext-方法"><a href="#getContext-方法" class="headerlink" title="getContext 方法"></a>getContext 方法</h4><p>语法：Canvas.getContext( typeStr )</p>
 <p>描述:</p>
 <ol>
@@ -316,8 +309,7 @@
 <th>默认。在目标图像上显示源图像。</th>
 </tr>
 </thead>
-<tbody>
-<tr>
+<tbody><tr>
 <td>source-atop</td>
 <td>在目标图像顶部显示源图像。源图像位于目标图像之外的部分是不可见的。</td>
 </tr>
@@ -357,9 +349,8 @@
 <td>xor</td>
 <td>使用异或操作对源图像与目标图像进行组合。</td>
 </tr>
-</tbody>
-</table>
-<p><img src="https://udisk-qn.jituancaiyun.com/1502437323758-2-32745-2180?e=1502440937&amp;token=nbzSdCoNGpHkOVbRoK0l-T-WPf694230OJxRz_AT:VyJzOzy3kEZg_E8n5SW10iuvzN8=" alt="示例"></p>
+</tbody></table>
+<p><img src="https://udisk-qn.jituancaiyun.com/1502437323758-2-32745-2180?e=1502440937&token=nbzSdCoNGpHkOVbRoK0l-T-WPf694230OJxRz_AT:VyJzOzy3kEZg_E8n5SW10iuvzN8=" alt="示例"></p>
 <h4 id="运用"><a href="#运用" class="headerlink" title="运用"></a>运用</h4><p>（1）刮刮乐</p>
 <h2 id="三、Image处理"><a href="#三、Image处理" class="headerlink" title="三、Image处理"></a>三、Image处理</h2><h4 id="1-drawImage-方法"><a href="#1-drawImage-方法" class="headerlink" title="1.drawImage()方法"></a>1.drawImage()方法</h4><p>是 Canvas 2D API 中的方法，它提供了多种方式来在Canvas上绘制图像。</p>
 <p>语法：ctx.drawImage(image, sx, sy, sWidth, sHeight, dx, dy, dWidth, dHeight)</p>
@@ -367,10 +358,10 @@
 <p>1.image绘制到上下文的元素。允许任何的 canvas 图像源(CanvasImageSource)，例如：HTMLImageElement，HTMLVideoElement，或者 HTMLCanvasElement。<br>2.dx目标画布的左上角在目标canvas上 X 轴的位置。<br>3.dy目标画布的左上角在目标canvas上 Y 轴的位置。<br>4.dWidth在目标画布上绘制图像的宽度。 允许对绘制的图像进行缩放。 如果不说明， 在绘制时图片宽度不会缩放。<br>5.dHeight在目标画布上绘制图像的高度。 允许对绘制的图像进行缩放。 如果不说明， 在绘制时图片高度不会缩放。<br>6.sx需要绘制到目标上下文中的，源图像的矩形选择框的左上角 X 坐标。<br>7.sy需要绘制到目标上下文中的，源图像的矩形选择框的左上角 Y 坐标。<br>8.sWidth需要绘制到目标上下文中的，源图像的矩形选择框的宽度。如果不说明，整个矩形从坐标的sx和sy开始，到图像的右下角结束。<br>9.sHeight需要绘制到目标上下文中的，源图像的矩形选择框的高度。</p>
 <p><img src="/2017/08/11/canvas/wangjing/Downloads/Canvas_drawimage.jpg" alt="Canvas_drawimage"></p>
 <h4 id="2-ImageData对象"><a href="#2-ImageData对象" class="headerlink" title="2.ImageData对象"></a>2.ImageData对象</h4><p><a href="https://developer.mozilla.org/zh-CN/docs/Web/API/ImageData" target="_blank" rel="noopener"><code>ImageData</code></a>对象中存储着canvas对象真实的像素数据</p>
-<p><a href="https://developer.mozilla.org/zh-CN/docs/Web/API/ImageData/data" target="_blank" rel="noopener"><code>ImageData.data</code></a> <a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Uint8ClampedArray" target="_blank" rel="noopener">Uint8ClampedArray`</a> 描述了一个一维数组，包含以 RGBA 顺序的数据，数据使用  <code>0</code> 至 <code>255</code>（包含）的整数表示。</p>
+<p><a href="https://developer.mozilla.org/zh-CN/docs/Web/API/ImageData/data" target="_blank" rel="noopener"><code>ImageData.data</code></a> [Uint8ClampedArray<code>](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Uint8ClampedArray) 描述了一个一维数组，包含以 RGBA 顺序的数据，数据使用</code>0<code>至</code>255`（包含）的整数表示。</p>
 <p><a href="https://developer.mozilla.org/zh-CN/docs/Web/API/ImageData/height" target="_blank" rel="noopener"><code>ImageData.height</code></a> 无符号长整型（<code>unsigned</code> <code>long</code>），使用像素描述 <strong>ImageData</strong> 的实际高度。</p>
 <p><a href="https://developer.mozilla.org/zh-CN/docs/Web/API/ImageData/width" target="_blank" rel="noopener"><code>ImageData.width</code></a> 无符号长整型（<code>unsigned</code> <code>long</code>），使用像素描述 <strong>ImageData</strong> 的实际宽度。</p>
-<h4 id="3-getImageData-方法"><a href="#3-getImageData-方法" class="headerlink" title="3.getImageData()方法"></a>3.getImageData()方法</h4><p>返回一个<a href="https://developer.mozilla.org/zh-CN/docs/Web/API/ImageData" target="_blank" rel="noopener"><code>ImageData</code></a>对象，用来描述canvas区域隐含的像素数据，这个区域通过矩形表示，起始点为<em>(sx, sy)、</em>宽为<em>sw、</em>高为<em>sh</em></p>
+<h4 id="3-getImageData-方法"><a href="#3-getImageData-方法" class="headerlink" title="3.getImageData()方法"></a>3.getImageData()方法</h4><p>返回一个<a href="https://developer.mozilla.org/zh-CN/docs/Web/API/ImageData" target="_blank" rel="noopener"><code>ImageData</code></a>对象，用来描述canvas区域隐含的像素数据，这个区域通过矩形表示，起始点为<em>(sx, sy)、<em>宽为</em>sw、<em>高为</em>sh</em></p>
 <p>语法：Canvas.getImageData(x, sy, sw, sh);</p>
 <h4 id="4-createImageData-方法"><a href="#4-createImageData-方法" class="headerlink" title="4.createImageData()方法"></a>4.createImageData()方法</h4><p>是 Canvas 2D API 创建一个 新的、空白的、指定大小的 <a href="https://developer.mozilla.org/zh-CN/docs/Web/API/ImageData" target="_blank" rel="noopener"><code>ImageData</code></a> 对象。 所有的像素在新对象中都是透明的。</p>
 <p>语法：ctx.createImageData(width, height);</p>
@@ -627,6 +618,10 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">electron</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">代码管理</a>
               </li>
              
@@ -636,10 +631,6 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">nginx</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">electron</a>
               </li>
              
               <li class="article-tag-list-item">

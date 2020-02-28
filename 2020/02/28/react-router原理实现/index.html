@@ -8,18 +8,18 @@
   <link rel="dns-prefetch" href="http://wangjing991.github.io">
   <title>react-router原理实现 | 天生骄傲</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="一、hash由来 url上面的hash设计初衷是用来作锚点的，在单页应用中通过a标签hash不同定位到不同位置； hash改变的时候不会刷新页面； 浏览器提供onhashchange事件监听，当hash改变的时候改变路由  12345678910111213141516171819202122232425262728293031323334应用实例function Routers() &amp;#123;">
+  <meta name="description" content="一、hash由来 url上面的hash设计初衷是用来作锚点的，在单页应用中通过a标签hash不同定位到不同位置；  hash改变的时候不会刷新页面；  浏览器提供onhashchange事件监听，当hash改变的时候改变路由">
 <meta name="keywords" content="react">
 <meta property="og:type" content="article">
 <meta property="og:title" content="react-router原理实现">
 <meta property="og:url" content="http://wangjing991.github.io/2020/02/28/react-router原理实现/index.html">
 <meta property="og:site_name" content="天生骄傲">
-<meta property="og:description" content="一、hash由来 url上面的hash设计初衷是用来作锚点的，在单页应用中通过a标签hash不同定位到不同位置； hash改变的时候不会刷新页面； 浏览器提供onhashchange事件监听，当hash改变的时候改变路由  12345678910111213141516171819202122232425262728293031323334应用实例function Routers() &amp;#123;">
+<meta property="og:description" content="一、hash由来 url上面的hash设计初衷是用来作锚点的，在单页应用中通过a标签hash不同定位到不同位置；  hash改变的时候不会刷新页面；  浏览器提供onhashchange事件监听，当hash改变的时候改变路由">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2020-02-28T08:51:11.465Z">
+<meta property="og:updated_time" content="2020-02-28T08:56:18.674Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="react-router原理实现">
-<meta name="twitter:description" content="一、hash由来 url上面的hash设计初衷是用来作锚点的，在单页应用中通过a标签hash不同定位到不同位置； hash改变的时候不会刷新页面； 浏览器提供onhashchange事件监听，当hash改变的时候改变路由  12345678910111213141516171819202122232425262728293031323334应用实例function Routers() &amp;#123;">
+<meta name="twitter:description" content="一、hash由来 url上面的hash设计初衷是用来作锚点的，在单页应用中通过a标签hash不同定位到不同位置；  hash改变的时候不会刷新页面；  浏览器提供onhashchange事件监听，当hash改变的时候改变路由">
   
     <link rel="alternative" href="/atom.xml" title="天生骄傲" type="application/atom+xml">
   
@@ -176,9 +176,14 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h3 id="一、hash由来"><a href="#一、hash由来" class="headerlink" title="一、hash由来"></a>一、hash由来</h3><ol>
-<li>url上面的hash设计初衷是用来作锚点的，在单页应用中通过a标签hash不同定位到不同位置；</li>
-<li>hash改变的时候不会刷新页面；</li>
-<li>浏览器提供onhashchange事件监听，当hash改变的时候改变路由</li>
+<li><p>url上面的hash设计初衷是用来作锚点的，在单页应用中通过a标签hash不同定位到不同位置；</p>
+</li>
+<li><p>hash改变的时候不会刷新页面；</p>
+</li>
+<li><p>浏览器提供onhashchange事件监听，当hash改变的时候改变路由</p>
+<a id="more"></a>
+
+</li>
 </ol>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">应用实例</span><br><span class="line"></span><br><span class="line">function Routers() &#123;</span><br><span class="line">	this.routes = &#123;&#125;;</span><br><span class="line">	this.currentUrl = &apos;&apos;;</span><br><span class="line">&#125;</span><br><span class="line">Routers.prototype.route = function(path, callback) &#123;</span><br><span class="line">	this.routes[path] = callback || function() &#123;&#125;;</span><br><span class="line">&#125;;</span><br><span class="line">Routers.prototype.refresh = function() &#123;</span><br><span class="line">	console.log(&apos;触发一次 hashchange，hash 值为&apos;, location.hash);</span><br><span class="line">	this.currentUrl = location.hash.slice(1) || &apos;/&apos;;</span><br><span class="line">	this.routes[this.currentUrl]();</span><br><span class="line">&#125;;</span><br><span class="line">Routers.prototype.init = function() &#123;</span><br><span class="line">	window.addEventListener(&apos;load&apos;, this.refresh.bind(this), false);</span><br><span class="line">	window.addEventListener(&apos;hashchange&apos;, this.refresh.bind(this), false);</span><br><span class="line">&#125;;</span><br><span class="line">window.Router = new Routers();</span><br><span class="line">window.Router.init();</span><br><span class="line">var content = document.querySelector(&apos;body&apos;);</span><br><span class="line">// change Page anything</span><br><span class="line">function changeBgColor(color) &#123;</span><br><span class="line">	content.style.backgroundColor = color;</span><br><span class="line">&#125;</span><br><span class="line">Router.route(&apos;/&apos;, function() &#123;</span><br><span class="line">	changeBgColor(&apos;white&apos;);</span><br><span class="line">&#125;);</span><br><span class="line">Router.route(&apos;/blue&apos;, function() &#123;</span><br><span class="line">	changeBgColor(&apos;blue&apos;);</span><br><span class="line">&#125;);</span><br><span class="line">Router.route(&apos;/green&apos;, function() &#123;</span><br><span class="line">	changeBgColor(&apos;green&apos;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
 
@@ -419,11 +424,11 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">electron</a>
+                <a href="javascript:void(0)" class="js-tag color1">typescript</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">代码管理</a>
+                <a href="javascript:void(0)" class="js-tag color4">electron</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -431,7 +436,7 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">typescript</a>
+                <a href="javascript:void(0)" class="js-tag color5">代码管理</a>
               </li>
              
               <li class="article-tag-list-item">

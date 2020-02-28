@@ -8,18 +8,18 @@
   <link rel="dns-prefetch" href="http://wangjing991.github.io">
   <title>redux基础 | 天生骄傲</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="一、redux作用把简单的事情搞复杂，提高数据修改的门槛；模块之间可以修改数据，通过约定好的规矩去更改 1.定义dispatch函数专门负责改数据123456789101112function dispatch (action) &amp;#123;  switch (action.type) &amp;#123;    case &amp;apos;UPDATE_TITLE_TEXT&amp;apos;:      appSt">
+  <meta name="description" content="一、redux作用把简单的事情搞复杂，提高数据修改的门槛；模块之间可以修改数据，通过约定好的规矩去更改">
 <meta name="keywords" content="react">
 <meta property="og:type" content="article">
 <meta property="og:title" content="redux基础">
 <meta property="og:url" content="http://wangjing991.github.io/2017/02/28/redux基础/index.html">
 <meta property="og:site_name" content="天生骄傲">
-<meta property="og:description" content="一、redux作用把简单的事情搞复杂，提高数据修改的门槛；模块之间可以修改数据，通过约定好的规矩去更改 1.定义dispatch函数专门负责改数据123456789101112function dispatch (action) &amp;#123;  switch (action.type) &amp;#123;    case &amp;apos;UPDATE_TITLE_TEXT&amp;apos;:      appSt">
+<meta property="og:description" content="一、redux作用把简单的事情搞复杂，提高数据修改的门槛；模块之间可以修改数据，通过约定好的规矩去更改">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2020-02-28T08:51:06.402Z">
+<meta property="og:updated_time" content="2020-02-28T08:56:04.135Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="redux基础">
-<meta name="twitter:description" content="一、redux作用把简单的事情搞复杂，提高数据修改的门槛；模块之间可以修改数据，通过约定好的规矩去更改 1.定义dispatch函数专门负责改数据123456789101112function dispatch (action) &amp;#123;  switch (action.type) &amp;#123;    case &amp;apos;UPDATE_TITLE_TEXT&amp;apos;:      appSt">
+<meta name="twitter:description" content="一、redux作用把简单的事情搞复杂，提高数据修改的门槛；模块之间可以修改数据，通过约定好的规矩去更改">
   
     <link rel="alternative" href="/atom.xml" title="天生骄傲" type="application/atom+xml">
   
@@ -176,6 +176,8 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h2 id="一、redux作用"><a href="#一、redux作用" class="headerlink" title="一、redux作用"></a>一、redux作用</h2><p>把简单的事情搞复杂，提高数据修改的门槛；模块之间可以修改数据，通过约定好的规矩去更改</p>
+<a id="more"></a>
+
 <h3 id="1-定义dispatch函数专门负责改数据"><a href="#1-定义dispatch函数专门负责改数据" class="headerlink" title="1.定义dispatch函数专门负责改数据"></a>1.定义dispatch函数专门负责改数据</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">function dispatch (action) &#123;</span><br><span class="line">  switch (action.type) &#123;</span><br><span class="line">    case &apos;UPDATE_TITLE_TEXT&apos;:</span><br><span class="line">      appState.title.text = action.text</span><br><span class="line">      break</span><br><span class="line">    case &apos;UPDATE_TITLE_COLOR&apos;:</span><br><span class="line">      appState.title.color = action.color</span><br><span class="line">      break</span><br><span class="line">    default:</span><br><span class="line">      break</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>所有数据修改必须经过这个dispatch，接受的参数是一个action，action一般包括两个type和playout两个key有时会加个meta</p>
@@ -424,11 +426,11 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">electron</a>
+                <a href="javascript:void(0)" class="js-tag color1">typescript</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">代码管理</a>
+                <a href="javascript:void(0)" class="js-tag color4">electron</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -436,7 +438,7 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">typescript</a>
+                <a href="javascript:void(0)" class="js-tag color5">代码管理</a>
               </li>
              
               <li class="article-tag-list-item">

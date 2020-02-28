@@ -155,6 +155,78 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-react-router原理实现" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/02/28/react-router原理实现/">react-router原理实现</a>
+    </h1>
+  
+
+        
+        <a href="/2020/02/28/react-router原理实现/" class="archive-article-date">
+  	<time datetime="2020-02-28T07:37:47.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-02-28</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="一、hash由来"><a href="#一、hash由来" class="headerlink" title="一、hash由来"></a>一、hash由来</h3><ol>
+<li>url上面的hash设计初衷是用来作锚点的，在单页应用中通过a标签hash不同定位到不同位置；</li>
+<li>hash改变的时候不会刷新页面；</li>
+<li>浏览器提供onhashchange事件监听，当hash改变的时候改变路由</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">应用实例</span><br><span class="line"></span><br><span class="line">function Routers() &#123;</span><br><span class="line">	this.routes = &#123;&#125;;</span><br><span class="line">	this.currentUrl = &apos;&apos;;</span><br><span class="line">&#125;</span><br><span class="line">Routers.prototype.route = function(path, callback) &#123;</span><br><span class="line">	this.routes[path] = callback || function() &#123;&#125;;</span><br><span class="line">&#125;;</span><br><span class="line">Routers.prototype.refresh = function() &#123;</span><br><span class="line">	console.log(&apos;触发一次 hashchange，hash 值为&apos;, location.hash);</span><br><span class="line">	this.currentUrl = location.hash.slice(1) || &apos;/&apos;;</span><br><span class="line">	this.routes[this.currentUrl]();</span><br><span class="line">&#125;;</span><br><span class="line">Routers.prototype.init = function() &#123;</span><br><span class="line">	window.addEventListener(&apos;load&apos;, this.refresh.bind(this), false);</span><br><span class="line">	window.addEventListener(&apos;hashchange&apos;, this.refresh.bind(this), false);</span><br><span class="line">&#125;;</span><br><span class="line">window.Router = new Routers();</span><br><span class="line">window.Router.init();</span><br><span class="line">var content = document.querySelector(&apos;body&apos;);</span><br><span class="line">// change Page anything</span><br><span class="line">function changeBgColor(color) &#123;</span><br><span class="line">	content.style.backgroundColor = color;</span><br><span class="line">&#125;</span><br><span class="line">Router.route(&apos;/&apos;, function() &#123;</span><br><span class="line">	changeBgColor(&apos;white&apos;);</span><br><span class="line">&#125;);</span><br><span class="line">Router.route(&apos;/blue&apos;, function() &#123;</span><br><span class="line">	changeBgColor(&apos;blue&apos;);</span><br><span class="line">&#125;);</span><br><span class="line">Router.route(&apos;/green&apos;, function() &#123;</span><br><span class="line">	changeBgColor(&apos;green&apos;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<h3 id="二、hash模式简单路由应用"><a href="#二、hash模式简单路由应用" class="headerlink" title="二、hash模式简单路由应用"></a>二、hash模式简单路由应用</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br></pre></td><td class="code"><pre><span class="line">// hash简单项目中的运用,可以满足简单的组件跳转的需求</span><br><span class="line">var app = &#123;</span><br><span class="line">    skip: 0,</span><br><span class="line"></span><br><span class="line">    start: function (container) &#123;</span><br><span class="line">        this.el = container;</span><br><span class="line">			</span><br><span class="line">	</span><br><span class="line">        window.addEventListener(&apos;hashchange&apos;, () =&gt; &#123;</span><br><span class="line">            if (this.skip &lt;= 0) &#123;</span><br><span class="line">                this.navigate(location.hash);</span><br><span class="line">            &#125; else &#123;</span><br><span class="line">                this.skip--;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;, false);</span><br><span class="line"></span><br><span class="line">        if (!location.hash || location.hash == &apos;#&apos;) &#123;</span><br><span class="line">            this.skip++;</span><br><span class="line">            location.hash = &apos;/&apos;;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        this.navigate(location.hash);</span><br><span class="line">    &#125;,</span><br><span class="line"></span><br><span class="line">    navigate: function (url, queryString) &#123;</span><br><span class="line">        if (queryString) &#123;</span><br><span class="line">            url = url + &quot;?&quot; + util.params(queryString)</span><br><span class="line">        &#125;</span><br><span class="line">        return promise = promise ? promise.then(this._navigate.bind(this, url)) : this._navigate(url);</span><br><span class="line">    &#125;,</span><br><span class="line"></span><br><span class="line">    _navigate: function (url) &#123;</span><br><span class="line">        url = url.replace(/^#/, &apos;&apos;);</span><br><span class="line">        return Promise.resolve()</span><br><span class="line">            .then(function () &#123;</span><br><span class="line">                return matchRoute(url);</span><br><span class="line">            &#125;)</span><br><span class="line">            .catch(function (e) &#123;</span><br><span class="line">                console.error(e);</span><br><span class="line">            &#125;)</span><br><span class="line">            .then((route: any) =&gt; &#123;</span><br><span class="line">                if (!route) return;</span><br><span class="line"></span><br><span class="line">                var uri = route.uri;</span><br><span class="line">                var page = pagesCache[uri.path];</span><br><span class="line">                if (!page) &#123;</span><br><span class="line">                    page = pagesCache[uri.path] = &#123;&#125;</span><br><span class="line">                &#125;</span><br><span class="line">                page.uri = uri;</span><br><span class="line"></span><br><span class="line">                console.log(&apos;%cPAGE_URI:&apos;, &apos;color:green&apos;, uri.path, uri.url);</span><br><span class="line"></span><br><span class="line">                let disposers = [];</span><br><span class="line"></span><br><span class="line">                if (activedPage &amp;&amp; activedPage != page) &#123;</span><br><span class="line">                    uri.referrer = activedPage.uri.url;</span><br><span class="line">                    activedPage.scrollTop = document.documentElement.scrollTop;</span><br><span class="line">                    activedPage.elements.forEach((el) =&gt; &#123;</span><br><span class="line">                        ReactDOM.unmountComponentAtNode(el);</span><br><span class="line">                    &#125;);</span><br><span class="line">                    delete pagesCache[activedPage.uri.path];</span><br><span class="line">                &#125;</span><br><span class="line"></span><br><span class="line">                if (!page.Component) &#123;</span><br><span class="line">                    page.Component = route.Component[CONTROLLER_PAGE]</span><br><span class="line">                        ? route.Component[CONTROLLER_PAGE]</span><br><span class="line">                        : route.Component;</span><br><span class="line">                &#125;</span><br><span class="line"></span><br><span class="line">                page.elements = [this.el];</span><br><span class="line">                ReactDOM.render(&lt;page.Component</span><br><span class="line">                    location=&#123;uri&#125;</span><br><span class="line">                    className=&#123;route.className&#125;</span><br><span class="line">                /&gt;, this.el, function () &#123;</span><br><span class="line">                    if (page.scrollTop) &#123;</span><br><span class="line">                        window.scrollTo(page.scrollTop);</span><br><span class="line">                    &#125;</span><br><span class="line">                    disposers.forEach((dispose) =&gt; dispose());</span><br><span class="line">                &#125;);</span><br><span class="line">                activedPage = page;</span><br><span class="line"></span><br><span class="line">                if (location.hash.replace(/^#/, &apos;&apos;) != url) &#123;</span><br><span class="line">                    this.skip++;</span><br><span class="line">                &#125;</span><br><span class="line">                location.hash = url;</span><br><span class="line">            &#125;)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="二、history应用"><a href="#二、history应用" class="headerlink" title="二、history应用"></a>二、history应用</h3><p>history页面跳转</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">// 这部分可参考红宝书 P215</span><br><span class="line">history.go(-1);       // 后退一页</span><br><span class="line">history.go(2);        // 前进两页</span><br><span class="line">history.forward();     // 前进一页</span><br><span class="line">history.back();      // 后退一页</span><br></pre></td></tr></table></figure>
+
+<p>HTML5新增history API</p>
+<h5 id="参考文档"><a href="#参考文档" class="headerlink" title="参考文档"></a>参考文档</h5><p><a href="https://github.com/youngwind/blog/issues/109" target="_blank" rel="noopener">单页面应用路由实现原理</a></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">react</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/02/28/react-router原理实现/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+  
     <article id="post-PWA技术分享" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -273,6 +345,65 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2020/01/26/web聊天应用部署/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+  
+    <article id="post-Typescript泛型" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/01/02/Typescript泛型/">Typescript泛型</a>
+    </h1>
+  
+
+        
+        <a href="/2020/01/02/Typescript泛型/" class="archive-article-date">
+  	<time datetime="2020-01-02T06:02:47.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-01-02</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="一、泛型"><a href="#一、泛型" class="headerlink" title="一、泛型"></a>一、泛型</h3>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">typescript</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/01/02/Typescript泛型/">展开全文 >></a>
         </p>
       
 
@@ -631,69 +762,10 @@
 
 
   
-    <article id="post-canvas" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/08/11/canvas/">canvas</a>
-    </h1>
-  
-
-        
-        <a href="/2017/08/11/canvas/" class="archive-article-date">
-  	<time datetime="2017-08-11T07:56:53.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-08-11</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="canvas定义"><a href="#canvas定义" class="headerlink" title="canvas定义"></a>canvas定义</h2><p>[canvas]是 <a href="https://developer.mozilla.org/zh-CN/docs/HTML/HTML5" target="_blank" rel="noopener">HTML5</a> 新增的元素，可用于通过使用<a href="https://developer.mozilla.org/zh-CN/docs/JavaScript" target="_blank" rel="noopener">JavaScript</a>中的脚本来绘制图形。例如，它可以用于绘制图形，制作照片，创建动画，甚至可以进行实时视频处理或渲染。</p>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">javascript</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">canvas</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/08/11/canvas/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-  
+    <nav id="page-nav">
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
+    </nav>
   
 
 
@@ -793,11 +865,11 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">javascript</a>
+                <a href="javascript:void(0)" class="js-tag color3">mingodb</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">mingodb</a>
+                <a href="javascript:void(0)" class="js-tag color1">javascript</a>
               </li>
              
               <li class="article-tag-list-item">

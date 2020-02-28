@@ -155,27 +155,28 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-正则表达式" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-canvas" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/06/10/正则表达式/">正则表达式</a>
+      <a class="article-title" href="/2017/08/11/canvas/">canvas</a>
     </h1>
   
 
         
-        <a href="/2017/06/10/正则表达式/" class="archive-article-date">
-  	<time datetime="2017-06-10T06:17:26.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-10</time>
+        <a href="/2017/08/11/canvas/" class="archive-article-date">
+  	<time datetime="2017-08-11T07:56:53.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-08-11</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id><a href="#" class="headerlink" title></a></h2>
+        <h2 id="canvas定义"><a href="#canvas定义" class="headerlink" title="canvas定义"></a>canvas定义</h2><p>[canvas]是 <a href="https://developer.mozilla.org/zh-CN/docs/HTML/HTML5" target="_blank" rel="noopener">HTML5</a> 新增的元素，可用于通过使用<a href="https://developer.mozilla.org/zh-CN/docs/JavaScript" target="_blank" rel="noopener">JavaScript</a>中的脚本来绘制图形。例如，它可以用于绘制图形，制作照片，创建动画，甚至可以进行实时视频处理或渲染。</p>
+        
       
 
       
@@ -183,11 +184,99 @@
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">javascript</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">canvas</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
       
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2017/06/10/正则表达式/">展开全文 >></a>
+          <a class="article-more-a" href="/2017/08/11/canvas/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+  
+    <article id="post-redux基础" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/02/28/redux基础/">redux基础</a>
+    </h1>
+  
+
+        
+        <a href="/2017/02/28/redux基础/" class="archive-article-date">
+  	<time datetime="2017-02-28T02:44:02.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-02-28</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="一、redux作用"><a href="#一、redux作用" class="headerlink" title="一、redux作用"></a>一、redux作用</h2><p>把简单的事情搞复杂，提高数据修改的门槛；模块之间可以修改数据，通过约定好的规矩去更改</p>
+<h3 id="1-定义dispatch函数专门负责改数据"><a href="#1-定义dispatch函数专门负责改数据" class="headerlink" title="1.定义dispatch函数专门负责改数据"></a>1.定义dispatch函数专门负责改数据</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">function dispatch (action) &#123;</span><br><span class="line">  switch (action.type) &#123;</span><br><span class="line">    case &apos;UPDATE_TITLE_TEXT&apos;:</span><br><span class="line">      appState.title.text = action.text</span><br><span class="line">      break</span><br><span class="line">    case &apos;UPDATE_TITLE_COLOR&apos;:</span><br><span class="line">      appState.title.color = action.color</span><br><span class="line">      break</span><br><span class="line">    default:</span><br><span class="line">      break</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>所有数据修改必须经过这个dispatch，接受的参数是一个action，action一般包括两个type和playout两个key有时会加个meta</p>
+<h3 id="2-抽离出store-所有全局state和dispatch集合"><a href="#2-抽离出store-所有全局state和dispatch集合" class="headerlink" title="2.抽离出store 所有全局state和dispatch集合"></a>2.抽离出store 所有全局state和dispatch集合</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">function createStore (state, stateChanger) &#123;</span><br><span class="line">  const getState = () =&gt; state</span><br><span class="line">  const dispatch = (action) =&gt; stateChanger(state, action)</span><br><span class="line">  return &#123; getState, dispatch &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>createStore两个参数state 和stateChanger state变化后执行的函数 dispatch函数体部分，返回一个对象</p>
+<h3 id="3-subscribe数据变化的时候执行这个监听函数"><a href="#3-subscribe数据变化的时候执行这个监听函数" class="headerlink" title="3.subscribe数据变化的时候执行这个监听函数"></a>3.subscribe数据变化的时候执行这个监听函数</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">function createStore (state, stateChanger) &#123;</span><br><span class="line">  const listeners = []</span><br><span class="line">  const subscribe = (listener) =&gt; listeners.push(listener)</span><br><span class="line">  const getState = () =&gt; state</span><br><span class="line">  const dispatch = (action) =&gt; &#123;</span><br><span class="line">    stateChanger(state, action)</span><br><span class="line">    listeners.forEach((listener) =&gt; listener())</span><br><span class="line">  &#125;</span><br><span class="line">  return &#123; getState, dispatch, subscribe &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="4-reducer-是一个纯函数，它接受两个参数，一个是-state，一个是-action-作为createStore的参数"><a href="#4-reducer-是一个纯函数，它接受两个参数，一个是-state，一个是-action-作为createStore的参数" class="headerlink" title="4.reducer 是一个纯函数，它接受两个参数，一个是 state，一个是 action,作为createStore的参数"></a>4.reducer 是一个纯函数，它接受两个参数，一个是 state，一个是 action,作为createStore的参数</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">function themeReducer (state, action) &#123;</span><br><span class="line">  if (!state) return &#123;</span><br><span class="line">    themeName: &apos;Red Theme&apos;,</span><br><span class="line">    themeColor: &apos;red&apos;</span><br><span class="line">  &#125;</span><br><span class="line">  switch (action.type) &#123;</span><br><span class="line">    case &apos;UPATE_THEME_NAME&apos;:</span><br><span class="line">      return &#123; ...state, themeName: action.themeName &#125;</span><br><span class="line">    case &apos;UPATE_THEME_COLOR&apos;:</span><br><span class="line">      return &#123; ...state, themeColor: action.themeColor &#125;</span><br><span class="line">    default:</span><br><span class="line">      return state</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">const store = createStore(themeReducer)</span><br></pre></td></tr></table></figure>
+
+<h3 id="5-redux-基本使用套路"><a href="#5-redux-基本使用套路" class="headerlink" title="5.redux 基本使用套路"></a>5.redux 基本使用套路</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">// 定一个 reducer</span><br><span class="line">function reducer (state, action) &#123;</span><br><span class="line">  /* 初始化 state 和 switch case */</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 生成 store</span><br><span class="line">const store = createStore(reducer)</span><br><span class="line"></span><br><span class="line">// 监听数据变化重新渲染页面</span><br><span class="line">store.subscribe(() =&gt; renderApp(store.getState()))</span><br><span class="line"></span><br><span class="line">// 首次渲染页面</span><br><span class="line">renderApp(store.getState()) </span><br><span class="line"></span><br><span class="line">// 后面可以随意 dispatch 了，页面自动更新</span><br><span class="line">store.dispatch(...)</span><br></pre></td></tr></table></figure>
+
+<h3 id="6-connect通过mapStateToProps来获取所有的state，mapDispatchToProps根据dispatch触发action"><a href="#6-connect通过mapStateToProps来获取所有的state，mapDispatchToProps根据dispatch触发action" class="headerlink" title="6.connect通过mapStateToProps来获取所有的state，mapDispatchToProps根据dispatch触发action"></a>6.connect通过mapStateToProps来获取所有的state，mapDispatchToProps根据dispatch触发action</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line">export const connect = (mapStateToProps, mapDispatchToProps) =&gt; (WrappedComponent) =&gt; &#123;</span><br><span class="line">  class Connect extends Component &#123;</span><br><span class="line">    static contextTypes = &#123;</span><br><span class="line">      store: PropTypes.object</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    constructor () &#123;</span><br><span class="line">      super()</span><br><span class="line">      this.state = &#123;</span><br><span class="line">        allProps: &#123;&#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    componentWillMount () &#123;</span><br><span class="line">      const &#123; store &#125; = this.context</span><br><span class="line">      this._updateProps()</span><br><span class="line">      store.subscribe(() =&gt; this._updateProps())</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    _updateProps () &#123;</span><br><span class="line">      const &#123; store &#125; = this.context</span><br><span class="line">      let stateProps = mapStateToProps</span><br><span class="line">        ? mapStateToProps(store.getState(), this.props)</span><br><span class="line">        : &#123;&#125; // 防止 mapStateToProps 没有传入</span><br><span class="line">      let dispatchProps = mapDispatchToProps</span><br><span class="line">        ? mapDispatchToProps(store.dispatch, this.props)</span><br><span class="line">        : &#123;&#125; // 防止 mapDispatchToProps 没有传入</span><br><span class="line">      this.setState(&#123;</span><br><span class="line">        allProps: &#123;</span><br><span class="line">          ...stateProps,</span><br><span class="line">          ...dispatchProps,</span><br><span class="line">          ...this.props</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    render () &#123;</span><br><span class="line">      return &lt;WrappedComponent &#123;...this.state.allProps&#125; /&gt;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  return Connect</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="7-Provider-容器组件-把所有组件都当做它的子组件"><a href="#7-Provider-容器组件-把所有组件都当做它的子组件" class="headerlink" title="7.Provider 容器组件 把所有组件都当做它的子组件"></a>7.Provider 容器组件 把所有组件都当做它的子组件</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">class Index extends Component &#123;</span><br><span class="line">  render () &#123;</span><br><span class="line">    return (</span><br><span class="line">      &lt;div&gt;</span><br><span class="line">        &lt;Header /&gt;</span><br><span class="line">        &lt;Content /&gt;</span><br><span class="line">      &lt;/div&gt;</span><br><span class="line">    )</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 把 Provider 作为组件树的根节点</span><br><span class="line">ReactDOM.render(</span><br><span class="line">  &lt;Provider store=&#123;store&#125;&gt;</span><br><span class="line">    &lt;Index /&gt;</span><br><span class="line">  &lt;/Provider&gt;,</span><br><span class="line">  document.getElementById(&apos;root&apos;)</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">react</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/02/28/redux基础/">展开全文 >></a>
         </p>
       
 
@@ -309,7 +398,15 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">javascript</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">electron</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">代码管理</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -329,23 +426,11 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">代码管理</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">node</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">nginx</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">javascript</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">function</a>
               </li>
              
               <li class="article-tag-list-item">

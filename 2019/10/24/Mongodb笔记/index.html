@@ -6,18 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://wangjing991.github.io">
-  <title>Archives: 2019/12 | 天生骄傲</title>
+  <title>Mongodb安装 | 天生骄傲</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="诗和远方">
-<meta property="og:type" content="website">
-<meta property="og:title" content="天生骄傲">
-<meta property="og:url" content="http://wangjing991.github.io/archives/2019/12/index.html">
+  <meta name="description" content="1.mongodb 文件目录usr/local/mongodb">
+<meta name="keywords" content="mingodb">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Mongodb安装">
+<meta property="og:url" content="http://wangjing991.github.io/2019/10/24/Mongodb笔记/index.html">
 <meta property="og:site_name" content="天生骄傲">
-<meta property="og:description" content="诗和远方">
+<meta property="og:description" content="1.mongodb 文件目录usr/local/mongodb">
 <meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2020-02-28T09:17:59.043Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="天生骄傲">
-<meta name="twitter:description" content="诗和远方">
+<meta name="twitter:title" content="Mongodb安装">
+<meta name="twitter:description" content="1.mongodb 文件目录usr/local/mongodb">
   
     <link rel="alternative" href="/atom.xml" title="天生骄傲" type="application/atom+xml">
   
@@ -153,102 +155,187 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-Mongodb笔记" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2019" class="archive-year">2019</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/12/25/electron入门/" class="archive-article-date">
-  	<time datetime="2019-12-25T05:39:42.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-25</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/12/25/electron入门/">electron入门</a>
+    <h1 class="article-title" itemprop="name">
+      Mongodb安装
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2019/10/24/Mongodb笔记/" class="archive-article-date">
+  	<time datetime="2019-10-24T06:29:38.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-10-24</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="1-mongodb-文件目录"><a href="#1-mongodb-文件目录" class="headerlink" title="1.mongodb 文件目录"></a>1.mongodb 文件目录</h2><p><code>usr/local/mongodb</code></p>
+<a id="more"></a>
+
+<h2 id="2-mongodb-conf-配置文件介绍"><a href="#2-mongodb-conf-配置文件介绍" class="headerlink" title="2.mongodb.conf 配置文件介绍"></a>2.mongodb.conf 配置文件介绍</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"># 设置端口号（默认的端口号是 27017）</span><br><span class="line">port = 27018</span><br><span class="line">#远程连接要指定ip 不然无法连接。0.0.0.0不限制ip访问,并开启对</span><br><span class="line">应端口</span><br><span class="line">bind_ip=0.0.0.0</span><br><span class="line"></span><br><span class="line"># 设置数据文件的存放目录</span><br><span class="line">dbpath = /usr/local/mongodb/data/koa2-blog/db</span><br><span class="line"></span><br><span class="line"># 设置日志文件的存放目录及其日志文件名</span><br><span class="line">logpath = /usr/local/mongodb/data/koa2-blog/log/mongodb.log</span><br><span class="line"></span><br><span class="line"># 设置每个数据库将被保存在一个单独的目录</span><br><span class="line">directoryperdb = true</span><br><span class="line"></span><br><span class="line"># 设置为以守护进程的方式运行，即在后台运行</span><br><span class="line">fork = true</span><br><span class="line"></span><br><span class="line"># 日志追加</span><br><span class="line">logappend=true</span><br><span class="line"># hh</span><br><span class="line"># 访问权限</span><br><span class="line">auth=false</span><br><span class="line">~</span><br></pre></td></tr></table></figure>
+
+<p>参数解释：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">参数解释: </span><br><span class="line">--dbpath 数据库路径(数据文件)</span><br><span class="line">--logpath 日志文件路径</span><br><span class="line">--master 指定为主机器</span><br><span class="line">--slave 指定为从机器</span><br><span class="line">--source 指定主机器的IP地址</span><br><span class="line">--pologSize 指定日志文件大小不超过64M.因为resync是非常操作量大且耗时，最好通过设置一个足够大的oplogSize来避免resync(默认的 oplog大小是空闲磁盘大小的5%)。</span><br><span class="line">--logappend 日志文件末尾添加，即使用追加的方式写日志</span><br><span class="line">--journal 启用日志</span><br><span class="line">--port 启用端口号</span><br><span class="line">--fork 在后台运行</span><br><span class="line">--only 指定只复制哪一个数据库</span><br><span class="line">--slavedelay 指从复制检测的时间间隔</span><br><span class="line">--auth 是否需要验证权限登录(用户名和密码)</span><br><span class="line">--syncdelay 数据写入硬盘的时间（秒），0是不等待，直接写入</span><br><span class="line">--notablescan 不允许表扫描</span><br><span class="line">--maxConns 最大的并发连接数，默认2000  </span><br><span class="line">--pidfilepath 指定进程文件，不指定则不产生进程文件</span><br><span class="line">--bind_ip 绑定IP，绑定后只能绑定的IP访问服务</span><br><span class="line">复</span><br></pre></td></tr></table></figure>
+
+<h2 id="3-自定义服务"><a href="#3-自定义服务" class="headerlink" title="3.自定义服务"></a>3.自定义服务</h2><p>在/lib/systemd/system/目录下新建mongodb.service文件，内容如下</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">[Unit]</span><br><span class="line">     Description=mongodb</span><br><span class="line">     After=network.target remote-fs.target nss-lookup.target</span><br><span class="line">[Service]</span><br><span class="line">     Type=forking</span><br><span class="line">     ExecStart=/usr/local/mongodb/bin/mongod -f /usr/local/mongodb/conf/mongodb.conf</span><br><span class="line">     ExecReload=/bin/kill -s HUP $MAINPID</span><br><span class="line">     ExecStop=/usr/local/mongodb/bin/mongod --shutdown -f /usr/local/mongodb/conf/mongodb.conf</span><br><span class="line">     PrivateTmp=true</span><br><span class="line">[Install]</span><br><span class="line">    WantedBy=multi-user.target</span><br></pre></td></tr></table></figure>
+
+<h2 id="4-启动关闭服务，设置开机启动"><a href="#4-启动关闭服务，设置开机启动" class="headerlink" title="4.启动关闭服务，设置开机启动"></a>4.启动关闭服务，设置开机启动</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">#启动服务 </span><br><span class="line">systemctl start mongodb.service   </span><br><span class="line">#关闭服务   </span><br><span class="line">systemctl stop mongodb.service   </span><br><span class="line">#开机启动   </span><br><span class="line">systemctl enable mongodb.service </span><br><span class="line"># 查看状态</span><br><span class="line">systemctl status mongodb.service</span><br><span class="line"># 如果mongodb.service配置错误 在更改后记得重新加载文件</span><br><span class="line">systemctl daemon-reload</span><br></pre></td></tr></table></figure>
+
+<h2 id="5-设置mongo、mongod命令为全局命令"><a href="#5-设置mongo、mongod命令为全局命令" class="headerlink" title="5.设置mongo、mongod命令为全局命令"></a>5.设置mongo、mongod命令为全局命令</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ln -s /usr/local/mongodb/bin/mongo  /usr/local/bin/mongo</span><br><span class="line">ln -s /usr/local/mongodb/bin/mongod  /usr/local/bin/mongod</span><br></pre></td></tr></table></figure>
+
+<h2 id="6-设置数据库访问权限"><a href="#6-设置数据库访问权限" class="headerlink" title="6.设置数据库访问权限"></a>6.设置数据库访问权限</h2><ul>
+<li><p>进入admin 表</p>
+<p><code>use admin</code></p>
+</li>
+<li><p>创建一个管理员账户</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">db.createUser(&#123;user:&quot;admin&quot;,pwd:&quot;wz123&quot;,roles:[&#123;role:&quot;userAdminAnyDatabase&quot;, db: &quot;admin&quot;&#125;]&#125;)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>开启权限验证</p>
+<p>在/usr/local/mongodb/conf/mongodb.conf中设置</p>
+<p><code>访问权限 auth=true</code></p>
+</li>
+</ul>
+<p>参考链接：<a href="https://juejin.im/post/5abb32d2f265da23a141f35c" target="_blank" rel="noopener">https://juejin.im/post/5abb32d2f265da23a141f35c</a></p>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">electron</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">mingodb</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://wangjing991.github.io/2019/10/24/Mongodb笔记/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/12/25/服务器相关知识/" class="archive-article-date">
-  	<time datetime="2019-12-25T05:39:42.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-25</time>
-</a>
-        </div>
-    	 
+<nav id="article-nav">
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/12/25/服务器相关知识/">服务器相关知识</a>
-    </h1>
+    <a href="/2019/10/24/multirepo_monorepo/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          multirepo-monorepo
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/08/11/canvas/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">canvas</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+
+
+
+  
+  
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">node</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">nginx</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
   
 
-    
+  
+  
 
 
           </div>
@@ -278,8 +365,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,

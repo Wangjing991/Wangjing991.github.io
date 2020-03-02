@@ -6,18 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://wangjing991.github.io">
-  <title>Archives: 2018 | 天生骄傲</title>
+  <title>react-store简易版 | 天生骄傲</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="诗和远方">
-<meta property="og:type" content="website">
-<meta property="og:title" content="天生骄傲">
-<meta property="og:url" content="http://wangjing991.github.io/archives/2018/index.html">
+  <meta name="description" content="一、store 容器组件 CreateWrap 创建一个Store函数接受一个 storeKey参数  默认暴露store容器，通过createWarp 生成，接受store和children两个参数  通过updateStore定义updateStore 方法给子组件调用  通过 storeKey定义data，子组件使用这个数据">
+<meta name="keywords" content="react">
+<meta property="og:type" content="article">
+<meta property="og:title" content="react-store简易版">
+<meta property="og:url" content="http://wangjing991.github.io/2020/03/02/react-store简易版/index.html">
 <meta property="og:site_name" content="天生骄傲">
-<meta property="og:description" content="诗和远方">
+<meta property="og:description" content="一、store 容器组件 CreateWrap 创建一个Store函数接受一个 storeKey参数  默认暴露store容器，通过createWarp 生成，接受store和children两个参数  通过updateStore定义updateStore 方法给子组件调用  通过 storeKey定义data，子组件使用这个数据">
 <meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2020-03-02T06:59:29.973Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="天生骄傲">
-<meta name="twitter:description" content="诗和远方">
+<meta name="twitter:title" content="react-store简易版">
+<meta name="twitter:description" content="一、store 容器组件 CreateWrap 创建一个Store函数接受一个 storeKey参数  默认暴露store容器，通过createWarp 生成，接受store和children两个参数  通过updateStore定义updateStore 方法给子组件调用  通过 storeKey定义data，子组件使用这个数据">
   
     <link rel="alternative" href="/atom.xml" title="天生骄傲" type="application/atom+xml">
   
@@ -153,36 +155,84 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-react-store简易版" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/02/28/react-router原理实现/" class="archive-article-date">
-  	<time datetime="2018-02-28T07:37:47.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-02-28</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/02/28/react-router原理实现/">react-router原理实现</a>
+    <h1 class="article-title" itemprop="name">
+      react-store简易版
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2020/03/02/react-store简易版/" class="archive-article-date">
+  	<time datetime="2020-03-02T05:39:57.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-02</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="一、store-容器组件"><a href="#一、store-容器组件" class="headerlink" title="一、store 容器组件"></a>一、store 容器组件</h2><ol>
+<li><p>CreateWrap 创建一个Store函数接受一个 storeKey参数</p>
+</li>
+<li><p>默认暴露store容器，通过createWarp 生成，接受store和children两个参数</p>
+</li>
+<li><p>通过updateStore定义updateStore 方法给子组件调用</p>
+</li>
+<li><p>通过 storeKey定义data，子组件使用这个数据</p>
+<a id="more"></a>
+
+</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br></pre></td><td class="code"><pre><span class="line">// ./store/index.js</span><br><span class="line">import React, &#123; Component, Children &#125; from &apos;react&apos;;</span><br><span class="line">import PropTypes  from &apos;prop-types&apos;;</span><br><span class="line">import  &#123; createAdvanced &#125;from &apos;./context&apos;;</span><br><span class="line">import  shallowEqual from &apos;./shallowEqual&apos;;</span><br><span class="line"></span><br><span class="line">const uniqueStoreKey = &apos;STORE_&apos; + (Math.random()).toString(36).split(&apos;.&apos;)[1].toUpperCase()</span><br><span class="line"></span><br><span class="line">export const CreateWrap = ( storeKey = &apos;store&apos; ) =&gt; &#123;</span><br><span class="line"></span><br><span class="line">    class Wrap extends Component &#123;</span><br><span class="line">        getChildContext () &#123;</span><br><span class="line">            return &#123;</span><br><span class="line">                [storeKey]: this[storeKey],</span><br><span class="line">                updateStore: this.updateStore,</span><br><span class="line">                subscribe: this.subscribe</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        constructor ( props, context ) &#123;</span><br><span class="line">            super(props, context)</span><br><span class="line">            this[storeKey] = props.store || &#123;&#125;</span><br><span class="line">            this.listenerMap = &#123;&#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        subscribe = ( nameKey, updateState ) =&gt; &#123;</span><br><span class="line">            if ( typeof updateState === &apos;function&apos; ) &#123;</span><br><span class="line">                this.listenerMap[nameKey] = (this.listenerMap[nameKey] || []).concat(updateState)</span><br><span class="line">            &#125;</span><br><span class="line">            return () =&gt; &#123;</span><br><span class="line">                this.listenerMap[nameKey] = this.listenerMap[nameKey].filter(it =&gt; it !== updateState)</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        updateStore = ( nameKey, data ) =&gt; &#123;</span><br><span class="line">            if ( shallowEqual(this[storeKey][nameKey], data) ) &#123;</span><br><span class="line">                return false</span><br><span class="line">            &#125;</span><br><span class="line">            this[storeKey][nameKey] = data</span><br><span class="line">            if ( Array.isArray(this.listenerMap[nameKey]) ) &#123;</span><br><span class="line">                this.listenerMap[nameKey].forEach(it =&gt; it())</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        render () &#123;</span><br><span class="line">            return Children.only(this.props.children)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    Wrap.propTypes = &#123;</span><br><span class="line">        store: PropTypes.object,</span><br><span class="line">        children: PropTypes.element.isRequired</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    Wrap.childContextTypes = &#123;</span><br><span class="line">        [storeKey]: PropTypes.object,</span><br><span class="line">        updateStore: PropTypes.func,</span><br><span class="line">        subscribe: PropTypes.func</span><br><span class="line">    &#125;</span><br><span class="line">    return Wrap</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">export  default  CreateWrap(uniqueStoreKey)</span><br><span class="line"></span><br><span class="line">export const createContext = createAdvanced(uniqueStoreKey)</span><br></pre></td></tr></table></figure>
+
+<h2 id="二、context高价组件"><a href="#二、context高价组件" class="headerlink" title="二、context高价组件"></a>二、context高价组件</h2><ol>
+<li>createAdvanced函数接受一个 storeKey参数，确保与CreateWrap相同的参数名</li>
+<li>createAdvanced返回的函数接受三个参数，WrappedComponent（react组件），nameKey（当前组件在store中取值key）,getStore（扩展参数，可不传）</li>
+<li>各子组件可以通过props.updateStore更新store里面 nameKey所对应的数据</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br></pre></td><td class="code"><pre><span class="line">// ./store/context;</span><br><span class="line">import React, &#123; Component, Children &#125; from &apos;react&apos;;</span><br><span class="line">import PropTypes  from &apos;prop-types&apos;;</span><br><span class="line"></span><br><span class="line">export const createAdvanced = ( storeKey = &apos;store&apos; ) =&gt; &#123;</span><br><span class="line"></span><br><span class="line">    return ( WrappedComponent, nameKey, getStore ) =&gt; &#123;</span><br><span class="line">        if ( typeof  nameKey === &apos;function&apos; ) &#123;</span><br><span class="line">            getStore = nameKey</span><br><span class="line">        &#125;</span><br><span class="line">        class Context extends Component &#123;</span><br><span class="line">            constructor ( props, context ) &#123;</span><br><span class="line">                super(props, context)</span><br><span class="line">                this.prevProps = props</span><br><span class="line">                this.subscribe = context.subscribe(nameKey, this.updateState)</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            componentWillReceiveProps ( nextProps ) &#123;</span><br><span class="line">                this.prevProps = nextProps</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            componentWillUnmount () &#123;</span><br><span class="line">                this.subscribe &amp;&amp; this.subscribe()</span><br><span class="line">                this.subscribe = null</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            updateState = () =&gt; &#123;</span><br><span class="line">                this.setState(&#123;&#125;)</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            updateStore = ( data ) =&gt; &#123;</span><br><span class="line">                if ( typeof nameKey === &apos;string&apos; ) &#123;</span><br><span class="line">                    this.context.updateStore(nameKey, data)</span><br><span class="line">                &#125; else &#123;</span><br><span class="line">                    throw new Error(</span><br><span class="line">                        &apos;Component nameKey is not string !&apos;</span><br><span class="line">                    );</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            getWrappedProps () &#123;</span><br><span class="line">                return &#123;</span><br><span class="line">                    ...this.prevProps,</span><br><span class="line">                    [nameKey]: this.context[storeKey][nameKey],</span><br><span class="line">                    updateStore: this.updateStore</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            render () &#123;</span><br><span class="line">                return &lt;WrappedComponent &#123;...this.getWrappedProps()&#125; /&gt;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        Context.propTypes = &#123;</span><br><span class="line">            store: PropTypes.object</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        Context.contextTypes = &#123;</span><br><span class="line">            [storeKey]: PropTypes.object,</span><br><span class="line">            updateStore: PropTypes.func,</span><br><span class="line">            subscribe: PropTypes.func,</span><br><span class="line">        &#125;</span><br><span class="line">        return Context</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="三、store应用"><a href="#三、store应用" class="headerlink" title="三、store应用"></a>三、store应用</h2><ol>
+<li><p>可以在需求跨层级数据共享时使用</p>
+</li>
+<li><p>轻量级，使用起来简单易上手</p>
+</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">// 实例代码</span><br><span class="line">import * as React from &apos;react&apos;;</span><br><span class="line">import &#123; Component &#125; from &apos;react&apos;;</span><br><span class="line">import List  from &apos;../components/ManageList/List&apos;</span><br><span class="line">import WrapStore, &#123; createContext &#125; from &apos;../../../components/store&apos;;</span><br><span class="line"></span><br><span class="line">const ListContext = createContext(List, &apos;modalState&apos;)</span><br><span class="line"></span><br><span class="line">export default class ManageList extends Component &#123;</span><br><span class="line"></span><br><span class="line">    constructor ( props ) &#123;</span><br><span class="line">        super(props);</span><br><span class="line">        this.store = &#123;</span><br><span class="line">            modalState: &#123;</span><br><span class="line">                createModalShow: false,</span><br><span class="line">                detailModalShow: false,</span><br><span class="line">                contractId: 0,</span><br><span class="line">                getTableList: util.noop,</span><br><span class="line">                contractTemplateList: []</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    render () &#123;</span><br><span class="line">        return (</span><br><span class="line">            &lt;WrapStore store=&#123;this.store&#125;&gt;</span><br><span class="line">                    &lt;ListContext/&gt;</span><br><span class="line">            &lt;/WrapStore&gt;</span><br><span class="line">        );</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -194,19 +244,90 @@
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://wangjing991.github.io/2020/03/02/react-store简易版/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
   
   
-    </div></section>
+    <a href="/2020/02/26/PWA技术分享/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">PWA技术分享</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+
+
+
+  
+  
   
 
-    
+  
+
+  
+  
 
 
           </div>
@@ -236,8 +357,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
